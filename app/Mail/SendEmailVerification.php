@@ -8,10 +8,17 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EmailVerification extends Mailable
+class SendEmailVerification extends Mailable
 {
     use Queueable, SerializesModels;
+    /**
+     * @var [User]
+     */
     private $user;
+
+    /**
+     * @var [string]
+     */
     private $token;
 
     /**
@@ -21,8 +28,10 @@ class EmailVerification extends Mailable
      */
     public function __construct(User $user, $token)
     {
+        
         $this->user = $user;
         $this->token = $token;
+        
     }
 
     /**
@@ -32,6 +41,10 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+       
+        return $this->view('emails.email-verification', [
+            'user' => $this->user,
+            'token' => $this->token,
+        ]);
     }
 }

@@ -3,8 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmail;
+use App\Jobs\SendEmail1;
+use App\Mail\EmailVerification;
+use App\Mail\SendEmailVerification;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class VerificationController extends Controller
 {
@@ -38,5 +45,26 @@ class VerificationController extends Controller
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    public function send(Request $request)
+    {
+        //  SendEmail::dispatch();
+
+        if ($request->user()->email_verified_at == null)
+        {
+            $user = $request->user();
+            $token = $request->user()->tokenId;
+            Mail::to('alirezakohandani@gmail.com')->send(new SendEmailVerification($user, $token));
+        }
+
+        return redirect()->route('home');
+       
+        //  return redirect()->back();
+    }
+
+    public function verify(string $token)
+    {
+        dd($token);
     }
 }

@@ -9,3 +9,8 @@ login: http://localhost/test/public/auth/login
 <br>
 register: http://localhost/test/public/auth/register
 
+
+register: http://localhost/test/public/auth/register
+
+
+register: http://localhost/test/public/auth/registerregister: http://localhost/test/public/auth/register

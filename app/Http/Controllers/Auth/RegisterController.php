@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmail;
+use App\Mail\SendEmailVerification;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 
 class RegisterController extends Controller
@@ -53,12 +57,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+       
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'cellphone' => $data['cellphone']
+            'cellphone' => $data['cellphone'],
+            'tokenId' => $data['_token'],
         ]);
+        
     }
     
     /**
@@ -73,11 +80,20 @@ class RegisterController extends Controller
          return view('auth.register');
      }
 
+     /**
+      * register and send Email
+      *
+      * 
+      * @return void
+      */
      public function register(Request $request)
      {
-        $this->validateForm($request); 
-        
+       
+
+       
         $user = $this->create($request->all());
+       
+        Mail::to($request->email)->send(new SendEmailVerification($user, $user->tokenId));
 
         Auth::login($user);
 
@@ -98,8 +114,8 @@ class RegisterController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'cellphone' => ['numeric', 'digits:11', 'nullable']
+            'password' => ['required', 'string', 'min:3', 'confirmed'],
+            'cellphone' => ['numeric', 'digits:3', 'nullable']
         
         ]);
      }
