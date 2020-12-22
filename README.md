@@ -12,5 +12,9 @@ register: http://localhost/test/public/auth/register
 
 register: http://localhost/test/public/auth/register
 
+## Route for call api
 
-register: http://localhost/test/public/auth/registerregister: http://localhost/test/public/auth/register
+php artisan db:seed
+
+get all posts: api/v1/posts
+get single post: api/v1/posts/{post}

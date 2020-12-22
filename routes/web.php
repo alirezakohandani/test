@@ -39,8 +39,8 @@ Route::get('email/verify/{token}', 'Account\FinalVerificationController@verify')
 // test route
 Route::get('email', function() {
 
+    //just test
     SendEmail::dispatch();
-
 });
 
 

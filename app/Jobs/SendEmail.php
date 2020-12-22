@@ -3,7 +3,8 @@
 namespace App\Jobs;
 
 use App\Mail\SendEmailVerification;
-use App\User;
+use App\Models\User as ModelsUser;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -31,11 +32,12 @@ class SendEmail implements ShouldQueue
      *
      * @return void
      */
-    public function handle(Request $request)
+    public function handle(User $user)
     {
-        $user = $request->user();
-        $token = $request->user()->token;
+      
+        // $user = $request->user();
+        // $token = $request->user()->token;
 
-        return Mail::to('alirezakohandani@gmail.com')->send(new SendEmailVerification($user, $token));
+        return Mail::to($user->email)->send(new SendEmailVerification($user->email, $user->token));
     }
 }
