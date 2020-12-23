@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use BadMethodCallException;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -52,10 +53,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        dd($exception);
+    
         if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
             return response()->json([
                 'message' => 'post not found',
             ], 404);
+        }
+        
+        if ($exception instanceof BadMethodCallException) {
+            return response()->json([
+                'message' => 'please check your form data',
+            ]);
         }
         return parent::render($request, $exception);
     }

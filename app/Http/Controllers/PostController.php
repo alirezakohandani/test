@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Post as ResourcesPost;
 use App\Models\Post;
 use App\Models\User;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +27,6 @@ class PostController extends Controller
         return ResourcesPost::collection(Post::all());
     }
 
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -30,7 +35,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       // $this->validator($request);
+        
+       return Post::create([
+            'user_id' => $request->user_id,
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $request->image,
+        ]);
     }
 
     /**
@@ -62,9 +74,16 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        // $this->validator($request);
+        
+        $post = Post::findOrFail($id);
+        $post->update($request->all());
+
+        return response()->json([
+            'message' => 'updated'
+        ], 200);
     }
 
     /**
@@ -73,8 +92,20 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+        return response()->json([
+            "message" => "delete was sucessfull",
+        ], 200);
+    }
+
+    protected function validator(Request $request)
+    {   
+        $request->validate([
+            'user_id' => ['requierd'],
+            'title' => ['requierd'],
+            'description' => ['requierd'],
+        ]);
     }
 }

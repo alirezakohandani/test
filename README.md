@@ -17,4 +17,5 @@ register: http://localhost/test/public/auth/register
 php artisan db:seed
 
 get all posts: api/v1/posts
+<br>
 get single post: api/v1/posts/{post}
