@@ -100,6 +100,23 @@ class PostController extends Controller
         ], 200);
     }
 
+    public function searchWithQueryString($search)
+    {
+  
+        $posts = DB::table('posts')->select(['*'])->where('description', 'LIKE', "%{$search}%")->get();
+
+        return ResourcesPost::collection($posts);
+          
+    }
+
+    public function searchWithOutQueryString(Request $request)
+    {
+        $search = $request->input('search');
+        
+        $posts = DB::table('posts')->select(['*'])->where('description', 'LIKE', "%{$search}%")->get();
+        
+        return ResourcesPost::collection($posts);
+    }
     protected function validator(Request $request)
     {   
         $request->validate([

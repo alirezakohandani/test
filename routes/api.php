@@ -21,6 +21,11 @@ use Illuminate\Http\Request;
 Route::group(['prefix' => 'v1'], function() {
     Route::resource('posts', 'PostController');
 });
+
+Route::group(['prefix' => 'v1'], function() {
+    Route::get('search/{search}', 'postController@searchWithQueryString');
+    Route::post('search', 'postController@searchWithOutQueryString');
+});
 Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
 
     Route::post('login', 'AuthController@login');
