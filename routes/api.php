@@ -24,6 +24,7 @@ Route::group(['prefix' => 'v1'], function() {
 
 Route::group(['prefix' => 'v1'], function() {
     Route::get('search/{search}', 'postController@searchWithQueryString');
+    Route::get('search', 'postController@search');
     Route::post('search', 'postController@searchWithOutQueryString');
 });
 Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {

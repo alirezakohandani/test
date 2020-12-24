@@ -100,10 +100,23 @@ class PostController extends Controller
         ], 200);
     }
 
+    public function search(Request $request)
+    {
+      $parameter = $request->input('s');
+      $posts = DB::table('posts')->select(['*'])
+      ->where('description', 'LIKE', "%{$parameter}%")
+      ->get();
+      return response()->json([
+        'test' => $posts,
+      ]); 
+    }
+
     public function searchWithQueryString($search)
     {
   
-        $posts = DB::table('posts')->select(['*'])->where('description', 'LIKE', "%{$search}%")->get();
+        $posts = DB::table('posts')->select(['*'])
+        ->where('description', 'LIKE', "%{$search}%")->
+        get();
 
         return ResourcesPost::collection($posts);
           
