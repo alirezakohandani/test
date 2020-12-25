@@ -16,10 +16,9 @@ use App\Http\Controllers\VerifyEmailController;
 use App\Jobs\SendEmail;
 use App\Mail\TopicCreated;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Redis;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,7 +31,6 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function() {
     Route::post('login', 'LoginController@login')->name('auth.login');
     Route::get('logout', 'LoginController@logout')->name('auth.logout');
     Route::get('send/email/verificarion', 'VerificationController@send')->name('send.verify.email');
-    
 });    
 Route::get('email/verify/{token}', 'Account\FinalVerificationController@verify')->name('email.verify');
 
@@ -43,5 +41,10 @@ Route::get('email', function() {
     SendEmail::dispatch();
 });
 
+// shop routes
+
+Route::group(['prefix' => 'shop'], function() {
+    Route::get('/', 'Front\ShopController@show')->name('shop');
+});
 
 

@@ -95,9 +95,9 @@ class RegisterController extends Controller
 
         Mail::to($request->email)->send(new SendEmailVerification($user, $user->tokenId));
         // SendEmail::dispatch();
-
+       
         Auth::login($user);
-
+   
         return redirect()->route('home')->with('registred', true);
 
        

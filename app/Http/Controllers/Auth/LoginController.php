@@ -65,11 +65,13 @@ class LoginController extends Controller
     public function login(Request $request) 
     {
        
-       $this->validateForm($request);
-
-      if (Auth::attempt($request->only('email', 'password'), true)) {
-     
+        $this->validateForm($request);
+       
+        if (Auth::attempt($request->only('email', 'password'), true)) 
+        {
+        
         return redirect()->intended();
+
         }
 
         

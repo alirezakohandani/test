@@ -53,8 +53,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        dd($exception);
-    
+         // dd($exception);
+         /**
+         * Web exception - 404 Not Found
+         */
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+           $exception->getMessage();
+        }
+
+        /**
+         * Api exception
+         */
         if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
             return response()->json([
                 'message' => 'post not found',

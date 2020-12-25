@@ -56,6 +56,7 @@ class VerificationController extends Controller
             $user = $request->user();
             $token = $request->user()->tokenId;
             Mail::to($user->email)->send(new SendEmailVerification($user, $token));
+            return redirect()->route('home')->with('email-verified', 'ایمیل تایید شد');
             //SendEmail::dispatch();
         }
 
