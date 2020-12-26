@@ -52,9 +52,10 @@
     </div>
   </div>
 @endforeach
-
-
 </section>
+<div>
+  {{ $files->links() }}
+</div>
 <!-- Wishlist Ends -->
 
         </div>
