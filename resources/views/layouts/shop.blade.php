@@ -7,9 +7,16 @@
 <h3 style="text-align: center">فروشگاه</h3>
 <hr>
 <br>
-
-
+<section>
+  <form action="{{ route('shop.search') }}" method="GET" role="search">
+    <div class="input-group">
+        <input type="text" class="form-control" name="s"
+            placeholder="جستجو در فایل ها"> 
+    </div>
+</form>
+</section>
 <section id="wishlist" class="grid-view wishlist-items">
+
 @foreach ($files as $k=>$file)
 <div class="card ecommerce-card">
     <div class="card-content">
@@ -52,6 +59,8 @@
     </div>
   </div>
 @endforeach
+ 
+
 </section>
 <div>
   {{ $files->links() }}

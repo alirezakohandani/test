@@ -45,6 +45,7 @@ Route::get('email', function() {
 
 Route::group(['prefix' => 'shop'], function() {
     Route::get('/', 'Front\ShopController@show')->name('shop');
+    Route::get('/search', 'Front\ShopController@search')->name('shop.search');
 });
 
 
