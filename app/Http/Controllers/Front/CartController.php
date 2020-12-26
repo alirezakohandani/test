@@ -3,15 +3,22 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\admin\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
+    private $redis;
+
+    public function __construct()
+    {
+        $this->redis = Redis::connection('default');
+    }
      /**
      * store products (files) in session
      * 
@@ -41,15 +48,37 @@ class CartController extends Controller
 
     }
     /**
-     * show cart page
+     * show cart PAGE
      * 
      * return void
      */
     public function display()
     {
-        return view('layouts.cart', [
-            'carts' => Session::get('cart'),
-            'address' => 'http://localhost/laravel_project/storage/app/',
-        ]);
+         return view('layouts.cart', [
+             'carts' => Session::get('cart'),
+             'address' => 'http://localhost/laravel_project/storage/app/',
+         ]);
+       
+    }
+    /**
+     * store products (files) in redis
+     * 
+     * return void
+     */
+
+    public function storeWithRedis(Request $request)
+    {
+        $file_id = $request->input('file_id');
+
+        $cart = json_decode(Redis::get('cart:' . Auth::id()), true) ?? [];
+
+        if(isset($cart[$file_id])) {
+             $cart[$file_id] =  $cart[$file_id]+1;
+        } else {
+            $cart[$file_id] = 1;
+        }
+
+        Redis::set('cart:' . Auth::id(), json_encode($cart));
+
     }
 }

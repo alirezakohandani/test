@@ -18,7 +18,7 @@ use App\Mail\TopicCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\Redis;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,6 +50,8 @@ Route::group(['prefix' => 'shop'], function() {
 
 
 Route::group(['prefix' => 'cart'], function () {
-    Route::post('/', 'Front\CartController@storeWithSession')-> name('cart');    
-    Route::get('/display', 'Front\CartController@display')-> name('cart.show');  
+    Route::post('/', 'Front\CartController@storeWithSession')->name('cart');    
+    Route::get('/display', 'Front\CartController@display')->name('cart.show');
+    Route::post('/redis', 'Front\CartController@storewithRedis')->name('cart.redis');  
+    Route::get('/redis/display', 'Front\CartController@displayWithRedis')->name('cart.show.redis');  
 });

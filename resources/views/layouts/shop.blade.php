@@ -54,7 +54,7 @@
           </div>
         </div>
     @auth
-    <form method="POST" action="{{ route('cart') }}">
+    <form method="POST" action="{{ route('cart.redis') }}">
       <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
       <input type="hidden" name="file_id" value="{{ $file->id }}">
       {!! csrf_field() !!}
