@@ -1,7 +1,8 @@
 
    
                
-<a href="{{ route('shop') }}">فروشگاه</a>             
+<a href="{{ route('shop') }}">فروشگاه</a>   
+       
 @guest
 <a href="{{ route('auth.register.form') }}"><button type="button" class="btn btn-success mr-1 mb-1 waves-effect waves-light">ثبت نام</button></a>
 <a href="{{ route('auth.login.form') }}"><button type="button" class="btn btn-info mr-1 mb-1 waves-effect waves-light">ورود</button></a>
@@ -15,3 +16,4 @@
        <a href="{{ route('admin.dashboard') }}"><button type="button" class="btn btn-info mr-1 mb-1 waves-effect waves-light">پنل</button></a>
    @endif
 @endauth
+<a href="{{ route('cart.show') }}"><div class="fonticon-wrap"><i class="fa fa-shopping-cart fa-2x"></i></div></a>

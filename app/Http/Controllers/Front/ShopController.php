@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\DB;
 class ShopController extends Controller
 {
     /**
-     * Undocumented function
+     * show products(file) in shop pages
      *
-     * @return void
+     * @return object
      */
     public function show()
     {
@@ -25,6 +25,12 @@ class ShopController extends Controller
     }
 
 
+    /**
+     * Search products by description
+     *
+     * 
+     * @return void 
+     */
     public function search(Request $request)
     {
         $search = $request->input('s');

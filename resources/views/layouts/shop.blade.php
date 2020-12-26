@@ -1,9 +1,9 @@
 @include('layouts.header')
+@include('partials.navbar')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/pages/app-ecommerce-shop.min.css') }}">
 </head>
   <!-- BEGIN: Body-->
   <body class="horizontal-layout horizontal-menu 2-columns ecommerce-application navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
-
 <h3 style="text-align: center">فروشگاه</h3>
 <hr>
 <br>
@@ -13,6 +13,7 @@
         <input type="text" class="form-control" name="s"
             placeholder="جستجو در فایل ها"> 
     </div>
+    <h4 class="success" style="text-align: center">{{ session('success') }}</h4>
 </form>
 </section>
 <section id="wishlist" class="grid-view wishlist-items">
@@ -52,9 +53,23 @@
             <h6 class="item-price"> 3,999,000 ريال</h6>
           </div>
         </div>
-        <div class="cart">
-          <i class="feather icon-shopping-cart"></i> <span class="add-to-cart">افزودن به سبد خرید</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">نمایش در سبد خرید</a>
-        </div>
+    @auth
+    <form method="POST" action="{{ route('cart') }}">
+      <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+      <input type="hidden" name="file_id" value="{{ $file->id }}">
+      {!! csrf_field() !!}
+      <button type="submit" class="btn btn-info">
+          افزودن به سبد خرید
+      </button>
+  </form>
+    @endauth
+    @guest
+    <a href="{{ route('auth.login.form') }}"><button type="submit" class="btn btn-info">
+      افزودن به سبد خرید
+  </button>
+    </a>
+    @endguest
+      
       </div>
     </div>
   </div>

@@ -49,3 +49,7 @@ Route::group(['prefix' => 'shop'], function() {
 });
 
 
+Route::group(['prefix' => 'cart'], function () {
+    Route::post('/', 'Front\CartController@storeWithSession')-> name('cart');    
+    Route::get('/display', 'Front\CartController@display')-> name('cart.show');  
+});
