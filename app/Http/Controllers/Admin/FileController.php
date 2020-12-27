@@ -36,7 +36,7 @@ class FileController extends Controller
      *
      * @return void
      */
-    public function send(Request $request)
+    public function store(Request $request)
     {
     
         $this->validator($request);
@@ -74,14 +74,29 @@ class FileController extends Controller
             'address' => THUMB_ADDR,
         ]);
     }
-
-    public function store(Request $request)
+ /**
+     * store File With Ajax
+     *
+     * @return void
+     */
+    public function storeWithAjax(Request $request)
  {
         
-      return  dd('yes ajax');
+        return  dd('yes ajax');
 
   
         return response()->json(['success'=>'Form Data is successfully Stored']);
  }
 
+
+    public function delete(Request $request)
+    {
+        $file_id = $request->input('id');
+
+        $file = File::find($file_id);
+
+        $file->delete();
+
+        return redirect()->back()->with('success', "فایل با عنوان$file->title حذف شد");
+    }
 }
