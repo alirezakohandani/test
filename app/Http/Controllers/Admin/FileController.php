@@ -11,16 +11,31 @@ use Illuminate\Support\Facades\DB;
 class FileController extends Controller
 {
   
+    /**
+     * show Panel Admin
+     *
+     * @return void
+     */
     public function showPanel()
     {
        return view('layouts.panel');
     }
 
+    /**
+     * show Uploade Form
+     *
+     * @return void
+     */
     public function showFileForm()
     {
         return view('admin.fileUpload');
     }
 
+    /**
+     * store File
+     *
+     * @return void
+     */
     public function send(Request $request)
     {
     
@@ -35,8 +50,7 @@ class FileController extends Controller
             'link' => $request->file('file')->store('file')
         ]);
 
-        
-        
+        return redirect()->back()->with('success', 'فایل با موفقیت بارگذاری شد.');
     }
 
     protected function validator(Request $request)
@@ -50,5 +64,24 @@ class FileController extends Controller
             'file' => ['required']
         ]);
     }
+
+    public function showMange()
+    {
+        $files = File::get();
+        define('THUMB_ADDR', 'http://localhost/laravel_project/storage/app/');
+        return view('admin.fileManage', [
+            'files' => $files,
+            'address' => THUMB_ADDR,
+        ]);
+    }
+
+    public function store(Request $request)
+ {
+        
+      return  dd('yes ajax');
+
+  
+        return response()->json(['success'=>'Form Data is successfully Stored']);
+ }
 
 }

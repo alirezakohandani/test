@@ -4,8 +4,9 @@
 <div class="row match-height">
     <div class="col-md-6 col-12" style="margin-right: auto; margin-left: auto; position:relative">
         <div class="card" style="height: ۶99.75px;">
+            <h4 class="success">{{ session('success') }}</h4>
             <div class="card-header">
-                <h4 class="card-title">فرم ثبت نام</h4>
+                <h4 class="card-title">فرم بارگذاری محصولات </h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
