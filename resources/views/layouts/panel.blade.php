@@ -67,12 +67,12 @@
 
     <!-- BEGIN: Page Vendor JS-->
     <script src="{{ asset('assets/app-assets/vendors/js/extensions/dropzone.min.js') }}"></script>
-<script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
-<script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/dataTables.select.min.js') }}"></script>
-<script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js') }}"></script>
+    <script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('assets/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js') }}"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -86,7 +86,36 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('assets/app-assets/js/scripts/ui/data-list-view.min.js') }}"></script>
     <!-- END: Page JS-->
-    
+    <script>
+      $(document).ready(function() {
+          $("form.ajax-form").submit(function(e) {
+                  e.preventDefault();
+                  var form = $(this);
+                  var resultBox = form.find('.result');
+                  resultBox.html("...");
+                  $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                   }
+                  }); 
+                  $.ajax({
+                      type: form.attr('method'),
+                      url: form.attr('action'),
+                      data: form.serialize(),
+                      timeout: 10000,
+                      success: function(response) {
+                          resultBox.html(response);
+                          form.trigger("reset");
+                      },
+                      error: function() {
+                          resultBox.html("خطایی رخ داده است.");
+                      }
+                  });
+  
+              });   
+             
+      });
+  </script>
   </body>
   <!-- END: Body-->
 </html>

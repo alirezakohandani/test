@@ -53,7 +53,7 @@
                                             {{ csrf_field() }}
                                             <input type="hidden" name="id" value="{{ $file->id }}">
                                               <button type="submit">
-                                              <span class="glyphicon glyphicon-trash"></span>
+                                                <div class="fonticon-wrap"><i class="fa fa-trash-o"></i></div>
                                               </button>
                                         </form> 
                                     </tr>

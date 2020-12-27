@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin/panel'], function() {
     Route::get('/', 'admin\FileController@showPanel')->name('admin.dashboard');
     Route::get('file/upload', 'admin\FileController@showFileForm')->name('admin.file.form');
     Route::post('file/upload', 'admin\FileController@store')->name('admin.file.send');
+    Route::post('file/upload/ajax', 'admin\FileController@storeWithAjax')->name('admin.file.send.ajax');
     Route::get('manage', 'admin\FileController@showMange')->name('admin.file.manage');
     Route::post('manage/delete', 'admin\FileController@delete')->name('admin.file.delete');
 });

@@ -74,18 +74,26 @@ class FileController extends Controller
             'address' => THUMB_ADDR,
         ]);
     }
- /**
+    /**
      * store File With Ajax
      *
      * @return void
      */
     public function storeWithAjax(Request $request)
  {
+        $this->validator($request);
         
-        return  dd('yes ajax');
+        File::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'type' => $request->type,
+            'price' => $request->price,
+            'thumb' => $request->file('thumb')->store('thumb'),
+            'link' => $request->file('file')->store('file')
+        ]);
 
   
-        return response()->json(['success'=>'Form Data is successfully Stored']);
+        return redirect()->back()->with('success', 'فایل با موفقیت بارگذاری شد.');
  }
 
 

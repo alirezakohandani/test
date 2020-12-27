@@ -9,8 +9,9 @@
                 <h4 class="card-title">فرم بارگذاری محصولات </h4>
             </div>
             <div class="card-content">
+
                 <div class="card-body">
-                    <form class="form form-vertical" method="POST" action="{{ route('admin.file.send') }}" enctype="multipart/form-data">
+                    <form class="form.ajax form form-vertical" method="POST" action="{{ route('admin.file.send.ajax') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-body">
                             <div class="row">
@@ -54,8 +55,7 @@
                                         <input type="file" id="password-vertical" class="form-control" name="file" placeholder="شماره همراه">
                                     </div>
                                 </div>
-                        
-              <div class="col-12">
+                           <div class="col-12">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">ارسال</button>
                                    
                                 </div>
@@ -63,6 +63,7 @@
                         </div>
                     </form>
                     @include('admin.partials.validation-errors')
+                    <div class="result"></div>
                 </div>
             </div>
         </div>
