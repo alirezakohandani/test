@@ -13,7 +13,7 @@
         <input type="text" class="form-control" name="s"
             placeholder="جستجو در فایل ها"> 
     </div>
-    <h4 class="success" style="text-align: center">{{ session('success') }}</h4>
+    <h4 class="success" style="text-align: center">{{ session('successInsertStore') }}</h4>
 </form>
 </section>
 <section id="wishlist" class="grid-view wishlist-items">

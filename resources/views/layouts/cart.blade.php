@@ -19,7 +19,7 @@
 </div>
 <div class="clear">
     </div>
-    <h4 style="text-align: center" class="danger">{{ session('delete_file') }}</h4>
+    <h4 style="text-align: center" class="danger">{{ session('deleteWithRedis') }}</h4>
     <table class="table data-list-view dataTable no-footer dt-checkboxes-select" id="DataTables_Table_0" role="grid">
         <thead>
           <tr role="row">

@@ -80,6 +80,8 @@ class CartController extends Controller
 
         Redis::set('cart:' . Auth::id(), json_encode($cart));
 
+        return redirect()->back()->with('successInsertStore', 'محصول به سبد خرید اضافه شد.');
+
     }
     /**
      * display products (files) in shopping cart
@@ -118,10 +120,7 @@ class CartController extends Controller
       
         Redis::set('cart:' . Auth::id(), json_encode($files_in_cart));
 
-        return redirect()->back()->with('deleteWithRedis', 'hazf shod');
-
-
-        
+        return redirect()->back()->with('deleteWithRedis', 'محصول از سبد خرید حذف شد.');
         
     }
 
