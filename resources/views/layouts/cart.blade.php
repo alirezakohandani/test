@@ -59,7 +59,8 @@
     </div>
     <!-- DataTable ends -->
   </section>
-
+<button class="btn btn-info"><a href="{{ route('shop') }}">ادامه خرید</a></button>
+<button class="btn btn-success"><a href="">خرید</a></button>
 <!-- BEGIN: Vendor JS-->
 <script src="{{ asset('assets/app-assets/vendors/js/vendors.min.js') }}"></script>
 <!-- BEGIN Vendor JS-->
