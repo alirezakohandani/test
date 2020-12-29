@@ -7,7 +7,6 @@
     <!-- END: Vendor CSS-->
 </head>
 <body>
-
 <section id="data-list-view" class="data-list-view-header">
     <!-- DataTable starts -->
     <div class="table-responsive">
@@ -20,14 +19,14 @@
 </div>
 <div class="clear">
     </div>
+    <h4 style="text-align: center" class="danger">{{ session('delete_file') }}</h4>
     <table class="table data-list-view dataTable no-footer dt-checkboxes-select" id="DataTables_Table_0" role="grid">
         <thead>
           <tr role="row">
             <th class="dt-checkboxes-cell dt-checkboxes-select-all sorting_disabled" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 50px;" data-col="0" aria-label=""><input type="checkbox" class="mac-checkbox"></th>
             <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="نام: activate to sort column descending" style="width: 514px;">تصویر</th>
             <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="نام: activate to sort column descending" style="width: 514px;">عنوان محصول</th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="دسته بندی: activate to sort column ascending" style="width: 117px;">نوع</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="مردم: activate to sort column ascending" style="width: 47px;">توضیحات</th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="وضعیت سفارش: activate to sort column ascending" style="width: 152px;">وضعیت سفارش</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="دسته بندی: activate to sort column ascending" style="width: 117px;">نوع</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="مردم: activate to sort column ascending" style="width: 47px;">تعداد سفارش</th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="قیمت: activate to sort column ascending" style="width: 151px;">قیمت</th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="اقدام: activate to sort column ascending" style="width: 65px;">اقدام</th>
         </tr>
@@ -40,20 +39,18 @@
             <td class="product-name sorting_1">{{ $cart['title'] }}</td>
             <td class="product-category">{{ $cart['type'] }}</td>
             <td>
-              <div class="progress progress-bar-warning">
+              {{ $number[$cart['id']] }}
               </div>
             </td>
-            <td>
-              <div class="chip chip-danger">
-                <div class="chip-body">
-                  <div class="chip-text">لغو شد</div>
-                </div>
-              </div>
-            </td>
-            <td class="product-price">{{ $cart['price'] }}</td>
+            <td class="product-price">{{ $number[$cart['id']] * $cart['price'] }}</td>
             <td class="product-action">
-              <span class="action-edit"><i class="feather icon-edit"></i></span>
-              <span class="action-delete"><i class="feather icon-trash"></i></span>
+              <form action="{{ route('cart.redis.delete') }}" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="id" value="{{ $cart['id'] }}">
+                  <button type="submit">
+                    <div class="fonticon-wrap"><span class="action-delete"><i class="feather icon-trash"></i></span></div>
+                  </button>
+            </form> 
             </td>
           </tr>
           @endforeach
@@ -62,6 +59,7 @@
     </div>
     <!-- DataTable ends -->
   </section>
+
 <!-- BEGIN: Vendor JS-->
 <script src="{{ asset('assets/app-assets/vendors/js/vendors.min.js') }}"></script>
 <!-- BEGIN Vendor JS-->

@@ -81,4 +81,5 @@ class CartController extends Controller
         Redis::set('cart:' . Auth::id(), json_encode($cart));
 
     }
+
 }

@@ -11,17 +11,32 @@ use Illuminate\Support\Facades\DB;
 class FileController extends Controller
 {
   
+    /**
+     * show Panel Admin
+     *
+     * @return void
+     */
     public function showPanel()
     {
        return view('layouts.panel');
     }
 
+    /**
+     * show Uploade Form
+     *
+     * @return void
+     */
     public function showFileForm()
     {
         return view('admin.fileUpload');
     }
 
-    public function send(Request $request)
+    /**
+     * store File
+     *
+     * @return void
+     */
+    public function store(Request $request)
     {
     
         $this->validator($request);
@@ -35,8 +50,7 @@ class FileController extends Controller
             'link' => $request->file('file')->store('file')
         ]);
 
-        
-        
+        return redirect()->back()->with('success', 'فایل با موفقیت بارگذاری شد.');
     }
 
     protected function validator(Request $request)
@@ -51,4 +65,46 @@ class FileController extends Controller
         ]);
     }
 
+    public function showMange()
+    {
+        $files = File::get();
+        define('THUMB_ADDR', 'http://localhost/laravel_project/storage/app/');
+        return view('admin.fileManage', [
+            'files' => $files,
+            'address' => THUMB_ADDR,
+        ]);
+    }
+    /**
+     * store File With Ajax
+     *
+     * @return void
+     */
+    public function storeWithAjax(Request $request)
+ {
+        $this->validator($request);
+        
+        File::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'type' => $request->type,
+            'price' => $request->price,
+            'thumb' => $request->file('thumb')->store('thumb'),
+            'link' => $request->file('file')->store('file')
+        ]);
+
+  
+        return redirect()->back()->with('success', 'فایل با موفقیت بارگذاری شد.');
+ }
+
+
+    public function delete(Request $request)
+    {
+        $file_id = $request->input('id');
+
+        $file = File::find($file_id);
+
+        $file->delete();
+
+        return redirect()->back()->with('success', "فایل با عنوان$file->title حذف شد");
+    }
 }
