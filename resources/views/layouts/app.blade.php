@@ -1,4 +1,5 @@
 @include('layouts.header')
+ 
 <body>
     <section id="basic-buttons">
         <div class="row">

@@ -10,7 +10,6 @@
     <link rel="apple-touch-icon" href="{{ asset('assets/app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/app-assets/images/ico/favicon.ico')}}">
     <link href="{{ asset('assets/app-assets/images/fonts.googleapis.css" rel="stylesheet')}}">
-
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/vendors/css/vendors-rtl.min.css')}}">
     <!-- END: Vendor CSS-->
@@ -33,3 +32,5 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/custom-rtl.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style-rtl.css') }}">
     <!-- END: Custom CSS-->
+    <!-- RECAPCHA -->
+    <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
