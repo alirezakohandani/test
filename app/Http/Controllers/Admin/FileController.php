@@ -107,4 +107,6 @@ class FileController extends Controller
 
         return redirect()->back()->with('success', "فایل با عنوان$file->title حذف شد");
     }
+
+    
 }

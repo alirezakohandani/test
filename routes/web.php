@@ -54,5 +54,6 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/display', 'Front\CartController@display')->name('cart.show');
     Route::post('/redis', 'Front\CartController@storewithRedis')->name('cart.redis');  
     Route::get('/redis/display', 'Front\CartController@displayWithRedis')->name('cart.show.redis');  
+    Route::post('/redis/delete', 'Front\CartController@deleteWithRedis')->name('cart.redis.delete');
 });
 

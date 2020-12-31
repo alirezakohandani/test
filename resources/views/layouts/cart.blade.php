@@ -19,7 +19,7 @@
 </div>
 <div class="clear">
     </div>
-    <h4 style="text-align: center" class="danger">{{ session('delete_file') }}</h4>
+    <h4 style="text-align: center" class="danger">{{ session('deleteWithRedis') }}</h4>
     <table class="table data-list-view dataTable no-footer dt-checkboxes-select" id="DataTables_Table_0" role="grid">
         <thead>
           <tr role="row">
@@ -59,7 +59,8 @@
     </div>
     <!-- DataTable ends -->
   </section>
-
+<button class="btn btn-info"><a href="{{ route('shop') }}">ادامه خرید</a></button>
+<button class="btn btn-success"><a href="">خرید</a></button>
 <!-- BEGIN: Vendor JS-->
 <script src="{{ asset('assets/app-assets/vendors/js/vendors.min.js') }}"></script>
 <!-- BEGIN Vendor JS-->
