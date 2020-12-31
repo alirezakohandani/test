@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Rules\recapcha;
+use App\Services\Notification;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -67,18 +68,17 @@ class LoginController extends Controller
     {
        
         $this->validateForm($request);
-      
-       
        
         if (Auth::attempt($request->only('email', 'password'), true)) 
         {
-        
+        $notific = new Notification();
+        $notific->SendEmail();
+
         return redirect()->intended();
 
         }
 
-        
-       return back()->with('message','اطلاعات اشتباه است.');
+        return back()->with('message','اطلاعات اشتباه است.');
     
     }
      /**
@@ -95,8 +95,7 @@ class LoginController extends Controller
             'g-recaptcha-response' => ['required', new recapcha],
         ]);
     }
-    
-   
+
     /**
      * logout
      * 

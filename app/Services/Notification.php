@@ -6,6 +6,7 @@ use App\Mail\WellcomeMail;
 use App\Models\User;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class Notification extends Mailable
@@ -16,9 +17,8 @@ class Notification extends Mailable
      * 
      */
 
-    public function SendEmail(Request $request)
-    {   
-
-       return Mail::to($request)->send(new WellcomeMail);
+    public function SendEmail()
+    {  
+       return Mail::to(Auth::user()->email)->send(new WellcomeMail);
     }
 }

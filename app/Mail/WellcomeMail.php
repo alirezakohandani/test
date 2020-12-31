@@ -28,6 +28,6 @@ class WellcomeMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.email-verification');
+        return $this->markdown('emails.wellcomeMail');
     }
 }
