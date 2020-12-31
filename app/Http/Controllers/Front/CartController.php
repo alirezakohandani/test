@@ -80,6 +80,48 @@ class CartController extends Controller
 
         Redis::set('cart:' . Auth::id(), json_encode($cart));
 
+        return redirect()->back()->with('successInsertStore', 'محصول به سبد خرید اضافه شد.');
+
+    }
+    /**
+     * display products (files) in shopping cart
+     * 
+     * return void
+     */
+
+    public function displayWithRedis(Request $request)
+    {
+        $files_in_cart = json_decode(Redis::get('cart:' . Auth::id()), true) ?? [];
+
+        $files = array();
+
+        foreach($files_in_cart as $k => $v)
+        {
+          $files[]  = File::find($k);
+        }
+        
+        return view('layouts.cart', [
+            'carts' => $files,
+            'address' => 'http://localhost/laravel_project/storage/app/',
+            'number' => $files_in_cart
+        ]);
+
+    }
+    public function deleteWithRedis(Request $request)
+    {
+        $file_id = $request->id;
+        
+        $files_in_cart = json_decode(Redis::get('cart:' . Auth::id()), true) ?? [];
+
+       
+
+        unset($files_in_cart[$file_id]);
+
+      
+        Redis::set('cart:' . Auth::id(), json_encode($files_in_cart));
+
+        return redirect()->back()->with('deleteWithRedis', 'محصول از سبد خرید حذف شد.');
+        
     }
 
 }
