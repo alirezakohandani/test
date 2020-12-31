@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Rules\recapcha;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,6 +67,8 @@ class LoginController extends Controller
     {
        
         $this->validateForm($request);
+      
+       
        
         if (Auth::attempt($request->only('email', 'password'), true)) 
         {
@@ -88,7 +91,8 @@ class LoginController extends Controller
       
         $request->validate([
             'email' => ['required', 'email' , 'exists:users'],
-            'password' => ['required']
+            'password' => ['required'],
+            'g-recaptcha-response' => ['required', new recapcha],
         ]);
     }
     

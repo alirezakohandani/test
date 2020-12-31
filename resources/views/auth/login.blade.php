@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-        
     <div class="row match-height">
         <div class="col-md-6 col-12" style="margin-right: auto; margin-left: auto; position:relative">
             <div class="card" style="height: 350.75px;">
@@ -28,7 +26,6 @@
                                             <input type="password" id="first-name-vertical" class="form-control" name="password" placeholder="پسورد">
                                         </div>
                                     </div>
-           
                                   </div>
                                   <div class="form-group col-12">
                                     <fieldset class="checkbox">
@@ -41,6 +38,7 @@
                                         </span>
                                         <span class="">مرا به خاطر بسپار</span>
                                       </div> 
+                                      <div class="g-recaptcha" data-sitekey="{{config('services.recapcha.site_key')}}"></div>
                                     </fieldset> 
                                   </div>
                                   <div class="col-12">
@@ -55,7 +53,7 @@
             </div>
         </div>
     </div>
-
+   
 @endsection
 
 
