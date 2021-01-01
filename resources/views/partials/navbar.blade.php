@@ -2,6 +2,8 @@
    
                
 <a href="{{ route('shop') }}">فروشگاه</a>   
+<br>
+
        
 @guest
 <a href="{{ route('auth.register.form') }}"><button type="button" class="btn btn-success mr-1 mb-1 waves-effect waves-light">ثبت نام</button></a>

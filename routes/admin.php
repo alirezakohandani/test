@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 
+//panel routes
 Route::group(['prefix' => 'admin/panel'], function() {
     Route::get('/', 'admin\FileController@showPanel')->name('admin.dashboard');
     Route::get('file/upload', 'admin\FileController@showFileForm')->name('admin.file.form');
@@ -22,5 +23,7 @@ Route::group(['prefix' => 'admin/panel'], function() {
     Route::post('file/upload/ajax', 'admin\FileController@storeWithAjax')->name('admin.file.send.ajax');
     Route::get('manage', 'admin\FileController@showMange')->name('admin.file.manage');
     Route::post('manage/delete', 'admin\FileController@delete')->name('admin.file.delete');
+    Route::get('post/upload', 'admin\PostController@showPostFrom')->name('admin.post.form');
+    Route::post('post/upload', 'admin\PostController@store')->name('admin.post.send');
 });
 

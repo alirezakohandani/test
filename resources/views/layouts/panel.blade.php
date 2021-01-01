@@ -19,16 +19,22 @@
       <div class="shadow-bottom"></div>
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-         
-       
           <li class=" navigation-header"><span>داشبورد</span>
           </li>
-         
           <li class=" nav-item"><a href="#"><i class="feather icon-layout"></i><span class="menu-title" data-i18n="Content">فایل ها</span></a>
             <ul class="menu-content">
               <li><a href="{{ route('admin.file.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Grid">ایجاد فایل</span></a>
               </li>
               <li><a href="{{ route('admin.file.manage') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Typography">مدیریت فایل</span></a>
+              </li>
+              </li>
+            </ul>
+          </li>
+          <li class=" nav-item"><a href="#"><i class="feather icon-layout"></i><span class="menu-title" data-i18n="Content">پست ها</span></a>
+            <ul class="menu-content">
+              <li><a href="{{ route('admin.post.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Grid">ایجاد پست</span></a>
+              </li>
+              <li><a href=""><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Typography">مدیریت پست</span></a>
               </li>
               </li>
             </ul>
