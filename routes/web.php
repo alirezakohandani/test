@@ -16,8 +16,10 @@ use App\Http\Controllers\VerifyEmailController;
 use App\Jobs\SendEmail;
 use App\Mail\TopicCreated;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 
@@ -42,8 +44,9 @@ Route::group(['prefix' => 'shop'], function() {
     Route::get('/search', 'Front\ShopController@search')->name('shop.search');
 });
 
+
 //shoppingCart routes
-Route::group(['prefix' => 'cart'], function () {
+Route::group(['prefix' => 'cart'], function() {
     Route::post('/', 'Front\CartController@storeWithSession')->name('cart');    
     Route::get('/display', 'Front\CartController@display')->name('cart.show');
     Route::post('/redis', 'Front\CartController@storewithRedis')->name('cart.redis');  
@@ -51,3 +54,7 @@ Route::group(['prefix' => 'cart'], function () {
     Route::post('/redis/delete', 'Front\CartController@deleteWithRedis')->name('cart.redis.delete');
 });
 
+Route::get('test', function()
+{
+    dd(Route::currentRouteName());
+});
