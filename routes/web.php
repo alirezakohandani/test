@@ -15,6 +15,10 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VerifyEmailController;
 use App\Jobs\SendEmail;
 use App\Mail\TopicCreated;
+use App\Models\admin\File;
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -34,21 +38,14 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function() {
 });    
 Route::get('email/verify/{token}', 'Account\FinalVerificationController@verify')->name('email.verify');
 
-// test route
-Route::get('email', function() {
-
-    //just test
-    SendEmail::dispatch();
-});
 
 // shop routes
-
 Route::group(['prefix' => 'shop'], function() {
     Route::get('/', 'Front\ShopController@show')->name('shop');
     Route::get('/search', 'Front\ShopController@search')->name('shop.search');
 });
 
-
+//shoppingCart routes
 Route::group(['prefix' => 'cart'], function () {
     Route::post('/', 'Front\CartController@storeWithSession')->name('cart');    
     Route::get('/display', 'Front\CartController@display')->name('cart.show');

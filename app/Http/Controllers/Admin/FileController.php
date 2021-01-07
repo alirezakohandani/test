@@ -99,12 +99,12 @@ class FileController extends Controller
 
     public function delete(Request $request)
     {
-        $file_id = $request->input('id');
+        $file_id = $request->id;
 
-        $file = File::find($file_id);
+        $file = File::where('id', $file_id)->findOrFail($file_id);
 
         $file->delete();
-
+    
         return redirect()->back()->with('success', "فایل با عنوان$file->title حذف شد");
     }
 

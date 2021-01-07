@@ -31,6 +31,7 @@
                                     <table class="table zero-configuration dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                                     <thead>
                                         <tr role="row">
+                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="موقعیت: activate to sort column ascending" style="width: 299px;">#</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="نام: activate to sort column descending" style="width: 157px;">عکس</th>
                                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="موقعیت: activate to sort column ascending" style="width: 299px;">عنوان</th>
                                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="دفتر: activate to sort column ascending" style="width: 140px;">توضیحات</th>
@@ -42,16 +43,17 @@
                                     <tbody>
                                 @foreach ($files as $file)
                                     <tr role="row" class="odd">
+                                            <td ><p>{{$loop->index+1}}</p></td>
                                             <td class="sorting_1"><img style="width: 50px; height: 50px" src="{{ $address.$file->thumb }}"></td>
                                             <td ><p>{{ $file->title }}</p></td>
-                                            <td>{{ substr($file->description, 0, 15) . '...' }}</td>
+                                            <td>{{ Str::limit($file->description, 15) }}</td>
                                             <td>{{ $file->type }}</td>
                                             <td>{{ $file->price }}</td>
                                             <td>
 
-                                        <form action="{{ route('admin.file.delete') }}" method="post">
+                                        <form action="{{ route('admin.file.delete', $file->id) }}" method="post">
                                             {{ csrf_field() }}
-                                            <input type="hidden" name="id" value="{{ $file->id }}">
+                                            @method('delete')
                                               <button type="submit">
                                                 <div class="fonticon-wrap"><i class="fa fa-trash-o"></i></div>
                                               </button>
