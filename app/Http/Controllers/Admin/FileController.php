@@ -12,16 +12,6 @@ class FileController extends Controller
 {
   
     /**
-     * show Panel Admin
-     *
-     * @return void
-     */
-    public function showPanel()
-    {
-       return view('layouts.panel');
-    }
-
-    /**
      * show Uploade Form
      *
      * @return void

@@ -11,18 +11,6 @@
 |
 */
 
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\VerifyEmailController;
-use App\Jobs\SendEmail;
-use App\Mail\TopicCreated;
-use App\Models\admin\File;
-use App\Models\Post;
-use App\Models\Tag;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Redis;
 
 Route::get('/', function () {
     return view('welcome');
