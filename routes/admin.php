@@ -27,4 +27,3 @@ Route::group(['prefix' => 'admin/', 'namespace' => 'Admin'], function() {
     Route::post('post/upload', 'PostController@store')->name('admin.post.send');
 });
 
-
