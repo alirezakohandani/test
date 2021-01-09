@@ -18,4 +18,4 @@
        <a href="{{ route('admin.dashboard') }}"><button type="button" class="btn btn-info mr-1 mb-1 waves-effect waves-light">پنل</button></a>
    @endif
 @endauth
-<a href="{{ route('cart.show.redis') }}"><div class="fonticon-wrap"><i class="fa fa-shopping-cart fa-2x"></i></div></a>
+<a href="{{ route('cart.redis.show') }}"><div class="fonticon-wrap"><i class="fa fa-shopping-cart fa-2x"></i></div></a>

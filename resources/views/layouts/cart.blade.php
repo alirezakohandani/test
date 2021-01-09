@@ -44,7 +44,7 @@
             </td>
             <td class="product-price">{{ $number[$cart['id']] * $cart['price'] }}</td>
             <td class="product-action">
-              <form action="{{ route('cart.redis.delete') }}" method="post">
+              <form action="{{ route('cart.redis.destroy') }}" method="post">
                 {{ csrf_field() }}
                 <input type="hidden" name="id" value="{{ $cart['id'] }}">
                   <button type="submit">

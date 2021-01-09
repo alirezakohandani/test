@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\TestController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,12 +34,12 @@ Route::group(['prefix' => 'shop'], function() {
     Route::get('/search', 'Front\ShopController@search')->name('shop.search');
 });
 
-//shoppingCart routes
-Route::group(['prefix' => 'cart'], function () {
-    Route::post('/', 'Front\CartController@storeWithSession')->name('cart');    
-    Route::get('/display', 'Front\CartController@display')->name('cart.show');
-    Route::post('/redis', 'Front\CartController@storewithRedis')->name('cart.redis');  
-    Route::get('/redis/display', 'Front\CartController@displayWithRedis')->name('cart.show.redis');  
-    Route::post('/redis/delete', 'Front\CartController@deleteWithRedis')->name('cart.redis.delete');
+//shopping Cart routes
+Route::group(['prefix' => 'cart', 'namespace' => 'Front'], function () {
+    
+    Route::post('/redis', 'CartController@store')->name('cart.redis.store');  
+    Route::get('/redis/show', 'CartController@show')->name('cart.redis.show');  
+    Route::post('/redis/destroy', 'CartController@destroy')->name('cart.redis.destroy');
+    
 });
 
