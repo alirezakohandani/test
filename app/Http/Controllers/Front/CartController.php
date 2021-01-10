@@ -25,7 +25,7 @@ class CartController extends Controller
    }
 
    public function show() {
-
+  
      $data = $this->cart->show();
 
      return view('layouts.cart', [
@@ -42,5 +42,12 @@ class CartController extends Controller
       $this->cart->destroy($request);
 
       return redirect()->back()->with('deleteWithRedis', 'محصول از سبد خرید حذف شد.');
+   }
+
+   public function clear()
+   {
+    
+      $this->cart->clear();
+      return redirect()->route('shop')->with('deleteCart', 'سبد خرید شما خالی است');
    }
 }
