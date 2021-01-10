@@ -44,7 +44,7 @@
             </td>
             <td class="product-price">{{ $number[$cart['id']] * $cart['price'] }}</td>
             <td class="product-action">
-              <form action="{{ route('cart.redis.destroy') }}" method="post">
+              <form action="{{ route('cart.destroy') }}" method="post">
                 {{ csrf_field() }}
                 <input type="hidden" name="id" value="{{ $cart['id'] }}">
                   <button type="submit">
@@ -61,6 +61,12 @@
   </section>
 <button class="btn btn-info"><a href="{{ route('shop') }}">ادامه خرید</a></button>
 <button class="btn btn-success"><a href="">خرید</a></button>
+<br>
+<br>
+<form action="{{ route('cart.clear') }}" method="post">
+  {{ csrf_field() }}
+    <button type="submit" class="btn btn-danger">حذف کل سبد خرید</button>
+</form> 
 <!-- BEGIN: Vendor JS-->
 <script src="{{ asset('assets/app-assets/vendors/js/vendors.min.js') }}"></script>
 <!-- BEGIN Vendor JS-->

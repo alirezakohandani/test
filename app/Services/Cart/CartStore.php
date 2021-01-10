@@ -9,5 +9,6 @@ interface CartStore
     public function store(Request $request);
     public function show();
     public function destroy(Request $request);
+    public function clear();
 
 }
