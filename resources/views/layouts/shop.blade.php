@@ -14,6 +14,8 @@
             placeholder="جستجو در فایل ها"> 
     </div>
     <h4 class="success" style="text-align: center">{{ session('successInsertStore') }}</h4>
+    <h4 class="success" style="text-align: center">{{ session('deleteCart') }}</h4>
+
 </form>
 </section>
 <section id="wishlist" class="grid-view wishlist-items">
@@ -54,7 +56,7 @@
           </div>
         </div>
     @auth
-    <form method="POST" action="{{ route('cart.redis.store') }}">
+    <form method="POST" action="{{ route('cart.store') }}">
       <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
       <input type="hidden" name="file_id" value="{{ $file->id }}">
       {!! csrf_field() !!}

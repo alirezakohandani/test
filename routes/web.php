@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\TestController;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,9 +38,17 @@ Route::group(['prefix' => 'shop'], function() {
 //shopping Cart routes
 Route::group(['prefix' => 'cart', 'namespace' => 'Front'], function () {
     
-    Route::post('/redis', 'CartController@store')->name('cart.redis.store');  
-    Route::get('/redis/show', 'CartController@show')->name('cart.redis.show');  
-    Route::post('/redis/destroy', 'CartController@destroy')->name('cart.redis.destroy');
+    Route::post('/', 'CartController@store')->name('cart.store');  
+    Route::get('/show', 'CartController@show')->name('cart.show');  
+    Route::post('/destroy', 'CartController@destroy')->name('cart.destroy');
+    Route::post('/clear', 'CartController@clear')->name('cart.clear');
     
 });
+
+// Route::get('test', function(Request $request){
+
+//     // $value = $request->session()->flash('status', 'successfull');
+//     $request->session()->forget('carts');
+//     dd(session()->all());
+// });
 

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 
-class RedisStore extends Controller
+class RedisStore implements CartStore
 {
     public function __construct()
     {
@@ -34,8 +34,6 @@ class RedisStore extends Controller
         }
 
         Redis::set('cart:' . Auth::id(), json_encode($cart));
-
-        
 
     }
     /**
@@ -71,6 +69,17 @@ class RedisStore extends Controller
 
         Redis::set('cart:' . Auth::id(), json_encode($files_in_cart));
         
+    }
+
+    /**
+     * clear all cart shopping 
+     *
+     * @return boolean
+     */
+    public function clear()
+    {
+        //To Do
+         return true;
     }
 
 }
