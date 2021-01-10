@@ -98,5 +98,6 @@ class SessionStore implements CartStore //Countable
       return session()->forget('shopping_cart2');
        
     }
+  
 
 }
