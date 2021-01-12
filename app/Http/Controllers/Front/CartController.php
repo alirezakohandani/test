@@ -27,12 +27,14 @@ class CartController extends Controller
    public function show() {
   
      $data = $this->cart->show();
-   
+
 
      return view('layouts.cart', [
       'carts' => $data['files'],
       'address' => 'http://localhost/laravel_project/storage/app/',
       'number' => $data['files_in_cart'],
+      'total_price' => $data['total_price'],
+      
 
      
   ]);
