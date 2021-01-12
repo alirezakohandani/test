@@ -30,7 +30,7 @@
 <div class="card ecommerce-card">
     <div class="card-content">
       <div class="item-img text-center">
-        <a href="app-ecommerce-details.html">
+        <a href="{{ route('shop.show.details', $file->id) }}">
           <img class="img-fluid" src="{{ $address . $file->thumb }}" alt="img-placeholder"></a>
       </div>
       <div class="card-body">

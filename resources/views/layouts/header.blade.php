@@ -12,6 +12,8 @@
     <link href="{{ asset('assets/app-assets/images/fonts.googleapis.css" rel="stylesheet')}}">
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/vendors/css/vendors-rtl.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/vendors/css/extensions/swiper.min.css')}}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -26,12 +28,14 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/core/menu/menu-types/vertical-menu.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/core/colors/palette-gradient.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/pages/app-ecommerce-details.min.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/custom-rtl.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style-rtl.css') }}">
     <!-- END: Custom CSS-->
+    
     <!-- RECAPCHA -->
     <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
     <script src="{{ asset('js/app.js') }}"></script>

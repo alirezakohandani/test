@@ -32,6 +32,7 @@ Route::get('email/verify/{token}', 'Account\FinalVerificationController@verify')
 // shop routes
 Route::group(['prefix' => 'shop'], function() {
     Route::get('/', 'Front\ShopController@show')->name('shop');
+    Route::get('/details/{id}', 'Front\ShopController@showDetails')->name('shop.show.details');
     Route::get('/search', 'Front\ShopController@search')->name('shop.search');
 });
 
