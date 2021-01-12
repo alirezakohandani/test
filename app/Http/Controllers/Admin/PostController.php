@@ -26,6 +26,9 @@ class PostController extends Controller
         ]);
         
         $posts->tags()->attach($request->input('tags'));
+
+        alert()->success('پست با موفقیت بارگذاری شد.');
+        
         return redirect()->back();
     }
 

@@ -83,10 +83,23 @@ class SessionStore implements CartStore //Countable
     {
       
         $files = Session::get('shopping_cart2');
-      
+        
+        $files_in_cart = array();
+        
+        $total_price = 0;
+        foreach($files as $k => $v)
+        {
+    
+            $file_in_cart[$k] = $v['count'];
+
+            $total_price = $total_price + ($v['price'] * $v['count']);
+        }
+
         return [
-            'files_in_cart' => null, 
-            'files' => $files
+            'files_in_cart' => $file_in_cart, 
+            'files' => $files,
+            'total_price' => $total_price,
+            
         ];
        
     }

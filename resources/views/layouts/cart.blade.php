@@ -20,6 +20,8 @@
 <div class="clear">
     </div>
     <h4 style="text-align: center" class="danger">{{ session('deleteWithRedis') }}</h4>
+    <div class="row">
+    <div class="col-md-8">
     <table class="table data-list-view dataTable no-footer dt-checkboxes-select" id="DataTables_Table_0" role="grid">
         <thead>
           <tr role="row">
@@ -56,6 +58,28 @@
           @endforeach
         </tbody>
       </table>
+    </div>
+    <div class="col-md-4">
+      <div class="table-responsive">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th>مجموع خرید</th>
+              <td>{{ $total_price }} ريال</td>
+            </tr>
+            <tr>
+              <th>تخفیف</th>
+              <td>۰ تومان</td>
+            </tr>
+            <tr>
+              <th>قیمت نهایی</th>
+              <td> {{ $total_price }}ريال</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
     </div>
     <!-- DataTable ends -->
   </section>
