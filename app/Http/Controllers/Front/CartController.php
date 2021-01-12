@@ -34,7 +34,7 @@ class CartController extends Controller
       'address' => 'http://localhost/laravel_project/storage/app/',
       'number' => $data['files_in_cart'],
       'total_price' => $data['total_price'],
-      'shipment' => 10000,
+      'shipment' => 20000,
 
      
   ]);
