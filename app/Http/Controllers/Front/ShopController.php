@@ -24,6 +24,24 @@ class ShopController extends Controller
         ]);
     }
 
+     /**
+     * show details products(file)
+     *
+     * @return object
+     */
+    public function showDetails(Request $request)
+    {
+        define('THUMB_ADDR', 'http://localhost/laravel_project/storage/app/');
+
+        $file_id = $request->id;
+
+        $file = File::where('id', $file_id)->first();
+    
+        return view('layouts.shopDetails', [
+            'file' => $file,
+            'address' => THUMB_ADDR,
+        ]);
+    }
 
     /**
      * Search products by description

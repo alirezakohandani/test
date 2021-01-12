@@ -79,13 +79,24 @@
     </div>
     <!-- DataTable ends -->
   </section>
-<a href="{{ route('shop') }}"><button class="btn btn-info">ادامه خرید</button></a>
-<br>
-<br>
-<form action="{{ route('cart.clear') }}" method="post">
-  {{ csrf_field() }}
-    <button type="submit" class="btn btn-danger">حذف کل سبد خرید</button>
-</form> 
+ <div>
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-md-4">
+          <a href="{{ route('shop') }}"><button class="btn btn-success btn-block">ادامه خرید</button></a>
+        </div>
+        <div class="col-md-4">
+          <form action="{{ route('cart.clear') }}" method="post">
+            {{ csrf_field() }}
+              <button type="submit" class="btn btn-danger btn-block">حذف کل سبد خرید</button>
+          </form> 
+         
+        </div>
+      </div>
+    </div>
+ </div>
+
 <!-- BEGIN: Vendor JS-->
 <script src="{{ asset('assets/app-assets/vendors/js/vendors.min.js') }}"></script>
 <!-- BEGIN Vendor JS-->
