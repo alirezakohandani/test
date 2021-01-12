@@ -11,12 +11,7 @@
     <!-- DataTable starts -->
     <div class="table-responsive">
       <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-          <div class="top"><div class="actions action-btns">
-              <div class="btn-group dropdown actions-dropodown">
-        </div>
-        </div>
-    </div>
-</div>
+      </div>
 <div class="clear">
     </div>
     <h4 style="text-align: center" class="danger">{{ session('deleteWithRedis') }}</h4>
@@ -61,30 +56,30 @@
     </div>
     <div class="col-md-4">
       <div class="table-responsive">
-        <table class="table table-borderless">
+        <table class="table table-borderless text-center">
           <tbody>
             <tr>
               <th>مجموع خرید</th>
-              <td>{{ $total_price }} ريال</td>
+              <td>{{ $total_price }} تومان</td>
             </tr>
             <tr>
-              <th>تخفیف</th>
-              <td>۰ تومان</td>
+              <th>هزینه حمل</th>
+              <td>{{ $shipment }} تومان</td>
             </tr>
             <tr>
-              <th>قیمت نهایی</th>
-              <td> {{ $total_price }}ريال</td>
+              <th>مبلغ قابل پرداخت</th>
+              <td> {{ $total_price + $shipment}} تومان</td>
             </tr>
           </tbody>
         </table>
+        <a href=""><button class="btn btn-success btn-default mx-auto d-block">ثبت و ادامه سفارش</button></a>
       </div>
     </div>
     </div>
     </div>
     <!-- DataTable ends -->
   </section>
-<button class="btn btn-info"><a href="{{ route('shop') }}">ادامه خرید</a></button>
-<button class="btn btn-success"><a href="">خرید</a></button>
+<a href="{{ route('shop') }}"><button class="btn btn-info">ادامه خرید</button></a>
 <br>
 <br>
 <form action="{{ route('cart.clear') }}" method="post">
