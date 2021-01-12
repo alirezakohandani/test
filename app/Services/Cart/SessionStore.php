@@ -26,11 +26,25 @@ class SessionStore implements CartStore //Countable
      
         $count = 1;
 
-    if ($carts !== null) {
-        for ($i=0; $i <sizeof($carts) ; $i++) { 
-            if ($carts[$i]['id'] == $file_id) {
-                $count = $carts[$i]['count'];
-                $carts[$i] = array(
+        if ($carts == null) {
+             $carts[$file->id] = array(
+                'id' => $file->id,
+                'type' => $file->type,
+                'title' => $file->title,
+                'description' => $file->price,
+                'price' => $file->price,
+                'thumb' => $file->thumb,
+                'link' => $file->link, 
+                'count' => $count,
+            );
+
+            Session::put('shopping_cart2', $carts);
+         
+                
+        } else {
+            if (isset($carts[$file_id])) {
+                $file_count = $carts[$file_id]['count'] ;
+                $carts[$file_id] = array(
                     'id' => $file->id,
                     'type' => $file->type,
                     'title' => $file->title,
@@ -38,25 +52,26 @@ class SessionStore implements CartStore //Countable
                     'price' => $file->price,
                     'thumb' => $file->thumb,
                     'link' => $file->link, 
-                    'count' => $count + 1,
+                    'count' => $count + $file_count,
                 );
+            
                 return Session::put('shopping_cart2', $carts);
             }
+            else {
+                $carts[$file_id] = array(
+                    'id' => $file->id,
+                    'type' => $file->type,
+                    'title' => $file->title,
+                    'description' => $file->price,
+                    'price' => $file->price,
+                    'thumb' => $file->thumb,
+                    'link' => $file->link, 
+                    'count' => $count,
+                );
+              
+                Session::put('shopping_cart2', $carts);
+            }
         }
-    }
-    
-        $carts[] = array(
-            'id' => $file->id,
-            'type' => $file->type,
-            'title' => $file->title,
-            'description' => $file->price,
-            'price' => $file->price,
-            'thumb' => $file->thumb,
-            'link' => $file->link, 
-            'count' => $count,
-        );
-      
-        Session::put('shopping_cart2', $carts);
     }
 
     /**
@@ -68,7 +83,7 @@ class SessionStore implements CartStore //Countable
     {
       
         $files = Session::get('shopping_cart2');
-       
+      
         return [
             'files_in_cart' => null, 
             'files' => $files
@@ -79,18 +94,8 @@ class SessionStore implements CartStore //Countable
     public function destroy(Request $request)
     {
        $file_id = $request->id; 
-
-      // $request->session()->forget('shopping_cart1.product' . $file_id);
-       $carts = $request->session()->pull('shopping_cart2', []);
-
-        for ($i=0; $i <count($carts) ; $i++) { 
-            if (array_search($file_id, $carts[$i]) !==false) {
-              unset($carts[$i]);
-              $request->session()->put('shopping_cart2', $carts);
-              break;
-            } 
-
-        }
+       
+       $request->session()->forget('shopping_cart2.' . $file_id);
     }
     public function clear()
     {

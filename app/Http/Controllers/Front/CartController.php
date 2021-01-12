@@ -40,6 +40,7 @@ class CartController extends Controller
    }
    public function destroy(Request $request)
    {
+   
       $this->cart->destroy($request);
 
       return redirect()->back()->with('deleteWithRedis', 'محصول از سبد خرید حذف شد.');

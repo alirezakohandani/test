@@ -26,7 +26,7 @@ class PostController extends Controller
         ]);
         
         $posts->tags()->attach($request->input('tags'));
-        return redirect()->back()->with('success', 'پست با موفقیت بارگذاری شد.');
+        return redirect()->back();
     }
 
     protected function validator(Request $request)

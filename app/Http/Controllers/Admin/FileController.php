@@ -71,6 +71,8 @@ class FileController extends Controller
      */
     public function storeWithAjax(Request $request)
  {
+
+        
         $this->validator($request);
         
         File::create([
@@ -82,8 +84,10 @@ class FileController extends Controller
             'link' => $request->file('file')->store('file')
         ]);
 
-  
-        return redirect()->back()->with('success', 'فایل با موفقیت بارگذاری شد.');
+        alert()->success('فایل با موفقیت بارگذاری شد.');
+        
+        return redirect()->back();
+      
  }
 
 
@@ -95,7 +99,9 @@ class FileController extends Controller
 
         $file->delete();
     
-        return redirect()->back()->with('success', "فایل با عنوان$file->title حذف شد");
+        alert()->error("فایل با عنوان $file->title حذف شد");
+        
+        return redirect()->back();
     }
 
     
