@@ -28,6 +28,11 @@ class CartController extends Controller
   
      $data = $this->cart->show();
 
+    if ($data === 0) {
+
+       return redirect()->back()->with('emptyCart', 'سبد خرید خالی است.');
+       
+    }
 
      return view('layouts.cart', [
       'carts' => $data['files'],

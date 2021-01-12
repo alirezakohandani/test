@@ -8,14 +8,20 @@
 <hr>
 <br>
 <section>
+  @if (session('successInsertStore'))
+  <div class="alert alert-success text-center">{{ session('successInsertStore') }}</div>
+  @endif
+  @if (session('deleteCart'))
+  <div class="alert alert-success text-center">{{ session('deleteCart') }}</div>
+  @endif
+  @if (session('emptyCart'))
+  <div class="alert alert-danger text-center">{{ session('emptyCart') }}</div>
+  @endif
   <form action="{{ route('shop.search') }}" method="GET" role="search">
     <div class="input-group">
         <input type="text" class="form-control" name="s"
             placeholder="جستجو در فایل ها"> 
     </div>
-    <h4 class="success" style="text-align: center">{{ session('successInsertStore') }}</h4>
-    <h4 class="success" style="text-align: center">{{ session('deleteCart') }}</h4>
-
 </form>
 </section>
 <section id="wishlist" class="grid-view wishlist-items">
