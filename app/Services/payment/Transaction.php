@@ -38,11 +38,16 @@ class Transaction
          
 
         //create payment
-        Payment::create([
+        $payment = Payment::create([
             'order_id' => $order->id,
             'method_payment' => $this->request->method,
             'amount' => $order->amount,
         ]);
+
+        Session::put('shopping_cart2', null);
+
+        return $order;
+        
         
 
     }

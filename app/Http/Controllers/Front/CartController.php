@@ -85,7 +85,9 @@ class CartController extends Controller
          'gateway' => 'required_if:method,online'
       ]);
 
-      $transaction->checkout();
+      $order = $transaction->checkout();
+
+      return redirect()->route('shop')->with('success_payment', true);
 
    }
 
