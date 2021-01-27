@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 
 class Zarinpal implements GatewayInterface
 {
-
+    private $merchantId;
     private $callback;
 
     public function __construct()
     {
+        $this->merchantId = config('payment.merchant_id');
         $this->callback = route('payment.verify', 'zarinpal');
     }
 
@@ -22,7 +23,8 @@ class Zarinpal implements GatewayInterface
      */
     public function pay(Order $order) 
     {
-        dd('ues');
+        dd('test');
+    
     }
 
     /**

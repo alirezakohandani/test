@@ -51,7 +51,7 @@ class Transaction
             {
                 case 'zarinpal':
                     $zarinpal = new Zarinpal();
-                    $zarinpal->pay($order);
+                    return $zarinpal->pay($order);
                     break;
                 case 'saman';
                     // To Do    
