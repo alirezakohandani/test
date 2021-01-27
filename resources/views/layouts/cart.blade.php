@@ -21,6 +21,7 @@
         <thead>
           <tr role="row">
             <th class="dt-checkboxes-cell dt-checkboxes-select-all sorting_disabled" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 50px;" data-col="0" aria-label=""><input type="checkbox" class="mac-checkbox"></th>
+            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="نام: activate to sort column descending" style="width: 514px;">ردیف</th>
             <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="نام: activate to sort column descending" style="width: 514px;">تصویر</th>
             <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="نام: activate to sort column descending" style="width: 514px;">عنوان محصول</th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="دسته بندی: activate to sort column ascending" style="width: 117px;">نوع</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="مردم: activate to sort column ascending" style="width: 47px;">تعداد سفارش</th>
@@ -32,6 +33,7 @@
             @foreach ($carts as $cart)
         <tr role="row" class="odd">
             <td class="dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes mac-checkbox"></td>
+            <td class="product-name sorting_1">{{ $loop->iteration }}</td>
             <td class="product-name sorting_1"><img style="width: 20px; height: 20px" src="{{ $address.$cart['thumb'] }}"></td>
             <td class="product-name sorting_1">{{ $cart['title'] }}</td>
             <td class="product-category">{{ $cart['type'] }}</td>

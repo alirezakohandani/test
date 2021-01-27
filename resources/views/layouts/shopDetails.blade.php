@@ -7,7 +7,7 @@
         <div class="row mb-5 mt-2">
           <div class="col-12 col-md-5 d-flex align-items-center justify-content-center mb-2 mb-md-0">
             <div class="d-flex align-items-center justify-content-center">
-              <img src="{{ THUMB_ADDR .$file->thumb }}" class="img-fluid" alt="product image">
+              <img src="{{ THUMB_ADDR . $file->thumb }}" class="img-fluid" alt="product image">
             </div>
           </div>
           <div class="col-12 col-md-6">
