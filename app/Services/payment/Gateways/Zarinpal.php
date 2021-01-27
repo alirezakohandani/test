@@ -2,6 +2,9 @@
 
 namespace App\Services\payment\Gateways;
 
+use App\Models\Order;
+use Illuminate\Http\Request;
+
 class Zarinpal implements GatewayInterface
 {
 
@@ -10,7 +13,7 @@ class Zarinpal implements GatewayInterface
      *
      * @return void
      */
-    public function pay() 
+    public function pay(Order $order) 
     {
         return true;
     }
@@ -20,7 +23,7 @@ class Zarinpal implements GatewayInterface
      *
      * @return boolean
      */
-    public function verify() 
+    public function verify(Request $request) 
     {
         return true;
     }
@@ -32,7 +35,7 @@ class Zarinpal implements GatewayInterface
      */
     public function getName():string
     {
-        return true;
+        return 'zarinPal';
     }
 
 }
