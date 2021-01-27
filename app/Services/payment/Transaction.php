@@ -43,7 +43,11 @@ class Transaction
             'method_payment' => $this->request->method,
             'amount' => $order->amount,
         ]);
-
+      
+        if ($payment->isOnline()) {
+            dd('onlineeeee');
+        }
+       
         Session::put('shopping_cart2', null);
 
         return $order;
