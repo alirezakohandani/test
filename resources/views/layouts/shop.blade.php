@@ -17,6 +17,9 @@
   @if (session('emptyCart'))
   <div class="alert alert-danger text-center">{{ session('emptyCart') }}</div>
   @endif
+  @if (session('success_payment'))
+  <div class="alert alert-success text-center">سفارش شما با شماره ثبت شد</div>
+  @endif
   <form action="{{ route('shop.search') }}" method="GET" role="search">
     <div class="input-group">
         <input type="text" class="form-control" name="s"
