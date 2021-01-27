@@ -15,7 +15,7 @@ class Zarinpal implements GatewayInterface
      */
     public function pay(Order $order) 
     {
-        return true;
+        dd('ues');
     }
 
     /**

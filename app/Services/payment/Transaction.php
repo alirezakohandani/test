@@ -5,6 +5,7 @@ namespace App\Services\payment;
 use App\Models\Front\Cart;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Services\payment\Gateways\Zarinpal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -45,7 +46,18 @@ class Transaction
         ]);
       
         if ($payment->isOnline()) {
-            dd('onlineeeee');
+        
+            switch ($this->request->gateway)
+            {
+                case 'zarinpal':
+                    $zarinpal = new Zarinpal();
+                    $zarinpal->pay($order);
+                    break;
+                case 'saman';
+                    // To Do    
+            }
+            
+            
         }
        
         Session::put('shopping_cart2', null);
