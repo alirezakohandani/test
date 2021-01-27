@@ -84,7 +84,6 @@ class SessionStore implements CartStore //Countable
       
         $files = Session::get('shopping_cart2');
         
-        
         $files_in_cart = array();
         
         $total_price = 0;
