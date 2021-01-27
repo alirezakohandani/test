@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 class Zarinpal implements GatewayInterface
 {
 
+    private $callback;
+
+    public function __construct()
+    {
+        $this->callback = route('payment.verify', 'zarinpal');
+    }
+
     /**
      * payment
      *

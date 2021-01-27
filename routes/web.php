@@ -48,6 +48,8 @@ Route::group(['prefix' => 'cart', 'namespace' => 'Front'], function () {
     
 });
 
+Route::post('payment/{gateway}/callback', 'PaymentController@verify')->name('payment.verify');
+
 // Route::get('test', function(Request $request){
 
 //     // $value = $request->session()->flash('status', 'successfull');
