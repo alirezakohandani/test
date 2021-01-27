@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Services\Cart\CartStore;
+use App\Services\payment\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -13,6 +14,7 @@ class CartController extends Controller
 
    public function __construct()
    {
+      $this->middleware('auth');
       $this->cart = app(CartStore::class);
    }
 
@@ -74,4 +76,17 @@ class CartController extends Controller
 
       return view('layouts.checkout', compact('total_price'));
    }
+
+   public function checkout(Request $request, Transaction $transaction)
+   {
+
+      $request->validate([
+         'method' => 'required',
+         'gateway' => 'required_if:method,online'
+      ]);
+
+      $transaction->checkout();
+
+   }
+
 }
