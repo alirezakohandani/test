@@ -74,7 +74,7 @@
             </tr>
           </tbody>
         </table>
-        <a href=""><button class="btn btn-success btn-default mx-auto d-block">ثبت و ادامه سفارش</button></a>
+        <a href="{{ route('cart.checkout.form') }}"><button class="btn btn-success btn-default mx-auto d-block">ثبت و ادامه سفارش</button></a>
       </div>
     </div>
     </div>

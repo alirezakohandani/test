@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/vendors/css/vendors-rtl.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/vendors/css/extensions/swiper.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/vendors/css/extensions/toastr.css')}}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -29,6 +30,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/core/menu/menu-types/vertical-menu.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/core/colors/palette-gradient.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/pages/app-ecommerce-details.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/pages/app-ecommerce-shop.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/plugins/forms/wizard.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/plugins/extensions/toastr.min.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->

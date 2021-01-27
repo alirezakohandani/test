@@ -43,6 +43,7 @@ Route::group(['prefix' => 'cart', 'namespace' => 'Front'], function () {
     Route::get('/show', 'CartController@show')->name('cart.show');  
     Route::post('/destroy', 'CartController@destroy')->name('cart.destroy');
     Route::post('/clear', 'CartController@clear')->name('cart.clear');
+    Route::get('/checkout', 'CartController@checkoutForm')->name('cart.checkout.form');
     
 });
 
