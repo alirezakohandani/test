@@ -104,5 +104,10 @@ class FileController extends Controller
         return redirect()->back();
     }
 
-    
+    public function showUpdateForm($id)
+    {
+        $file = File::findOrFail($id);
+     
+        return view('admin.fileUpdate', compact('file'));
+    }
 }
