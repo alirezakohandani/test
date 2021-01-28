@@ -77,8 +77,10 @@ class Zarinpal implements GatewayInterface
                     'gateway' => 'zarinpal',
                 ];
             }
+            throw new PaymentException('Transaction failed. Status:' . $result->Status);
     
         }
+        throw new PaymentException('Transaction canceled by user');
     }
 
 }
