@@ -58,6 +58,8 @@
                                                 <div class="fonticon-wrap"><i class="fa fa-trash-o"></i></div>
                                               </button>
                                         </form> 
+                                   
+                                        <div class="fonticon-wrap"><a href="{{ route('admin.file.form.update', $file->id) }}"><i class="fa fa-pencil"></i></a></div>
                                     </tr>
                                 @endforeach
                             </tbody> 
