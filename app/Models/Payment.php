@@ -14,8 +14,4 @@ class Payment extends Model
         'status' => 0,
     ];
 
-    public function isOnline()
-    {
-        return $this->method_payment;
-    }
 }

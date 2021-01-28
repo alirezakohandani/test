@@ -45,8 +45,7 @@ class Transaction
             'amount' => $order->amount,
         ]);
       
-        if ($payment->isOnline()) {
-        
+        if ($this->request->method == 'online') {
             switch ($this->request->gateway)
             {
                 case 'zarinpal':
@@ -55,16 +54,17 @@ class Transaction
                     break;
                 case 'saman';
                     // To Do    
-            }
+            } 
             
+            Session::put('shopping_cart2', null);
+       
+            return $order;
             
         }
+    
        
-        Session::put('shopping_cart2', null);
-
-        return $order;
         
-        
+ 
 
     }
 }
