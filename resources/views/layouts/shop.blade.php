@@ -1,5 +1,12 @@
 @include('layouts.header')
+@section('breadcrumb')
+   @parent
+   <li class="breadcrumb-item active">محصولات</li>
+@endsection
 @include('partials.navbar')
+
+
+
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/pages/app-ecommerce-shop.min.css') }}">
 </head>
   <!-- BEGIN: Body-->

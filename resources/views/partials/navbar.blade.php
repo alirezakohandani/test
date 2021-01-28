@@ -44,6 +44,11 @@
                 </form>
                 @endauth
               </nav>
+              <ol class="breadcrumb">
+                @section('breadcrumb')
+                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                @show
+              </ol>
             </div>
         </div>
     </div>
