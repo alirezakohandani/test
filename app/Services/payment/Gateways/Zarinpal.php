@@ -32,7 +32,7 @@ class Zarinpal implements GatewayInterface
 
         $result = $this->client->PaymentRequest(
             [
-                'MerchantID' => 'dfsdssf',
+                'MerchantID' => $this->merchantId,
                 'Amount' => 1000,
                 'Description' => 'توضیحات در خصوص محصولات مختلف',
                 'Email' => auth()->user()->email,
