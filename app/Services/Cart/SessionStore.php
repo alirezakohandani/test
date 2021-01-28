@@ -86,25 +86,18 @@ class SessionStore implements CartStore //Countable
         
         $files_in_cart = array();
         
-        $total_price = 0;
-
         if (empty($files)) {
             return 0;
         }
 
         foreach($files as $k => $v)
         {
-    
             $files_in_cart[$k] = $v['count'];
-
-            $total_price = $total_price + ($v['price'] * $v['count']);
         }
 
         return [
             'files_in_cart' => $files_in_cart, 
             'files' => $files,
-            'total_price' => $total_price,
-            
             ];
     }
 
