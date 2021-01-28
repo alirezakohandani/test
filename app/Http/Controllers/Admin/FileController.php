@@ -110,4 +110,21 @@ class FileController extends Controller
      
         return view('admin.fileUpdate', compact('file'));
     }
+
+    public function update(Request $request)
+    {
+        //$this->validator($request);
+
+        $file = File::findOrFail($request->id);
+
+        $file->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+        ]);
+
+        alert()->success('فایل با موفقیت به روز رسانی شد.');
+
+        return redirect()->back();
+    }
 }

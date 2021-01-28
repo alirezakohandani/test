@@ -11,7 +11,7 @@
             <div class="card-content">
 
                 <div class="card-body">
-                    <form class="form.ajax form form-vertical" method="POST" action="{{ route('admin.file.send.ajax') }}" enctype="multipart/form-data">
+                    <form class="form.ajax form form-vertical" method="POST" action="{{ route('admin.file.update') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-body">
                             <div class="row">
@@ -56,6 +56,7 @@
                                     </div>
                                 </div>
                            <div class="col-12">
+                            <input type="hidden" name="id" value="{{ $file->id }}">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">ارسال</button>
                                    
                                 </div>
