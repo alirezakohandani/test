@@ -2,6 +2,7 @@
 
 namespace App\Services\payment\Gateways;
 
+use App\Exceptions\PaymentException;
 use App\Models\Order;
 use Exception;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class Zarinpal implements GatewayInterface
 
         $result = $this->client->PaymentRequest(
             [
-                'MerchantID' => $this->merchantId,
+                'MerchantID' => 'dfsdssf',
                 'Amount' => 1000,
                 'Description' => 'توضیحات در خصوص محصولات مختلف',
                 'Email' => auth()->user()->email,
@@ -40,14 +41,14 @@ class Zarinpal implements GatewayInterface
             ]
         );
         
-
         if ($result->Status == 100) {
 
             $url = 'https://www.zarinpal.com/pg/StartPay/' . $result->Authority;
           
             return $url;
-
         }
+
+        throw new PaymentException('zarinpal gateway connection error:' . $result->Status);
 
     }
 
