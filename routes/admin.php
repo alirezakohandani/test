@@ -16,14 +16,14 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 
 //panel routes
-Route::group(['prefix' => 'admin/', 'namespace' => 'Admin'], function() {
-    Route::get('/', 'DashboardController')->name('admin.dashboard');
-    Route::get('file/upload', 'FileController@showFileForm')->name('admin.file.form');
-    Route::post('file/upload', 'FileController@store')->name('admin.file.send');
-    Route::post('file/upload/ajax', 'FileController@storeWithAjax')->name('admin.file.send.ajax');
-    Route::get('manage', 'FileController@showMange')->name('admin.file.manage');
-    Route::delete('manage/delete/{id}', 'FileController@delete')->name('admin.file.delete');
-    Route::get('post/upload', 'PostController@showPostFrom')->name('admin.post.form');
-    Route::post('post/upload', 'PostController@store')->name('admin.post.send');
+Route::group(['prefix' => 'admin/', 'namespace' => 'Admin', 'as' => 'admin.'], function() {
+    Route::get('/', 'DashboardController')->name('dashboard');
+    Route::get('file/upload', 'FileController@showFileForm')->name('file.form');
+    Route::post('file/upload', 'FileController@store')->name('file.send');
+    Route::post('file/upload/ajax', 'FileController@storeWithAjax')->name('file.send.ajax');
+    Route::get('manage', 'FileController@showMange')->name('file.manage');
+    Route::delete('manage/delete/{id}', 'FileController@delete')->name('file.delete');
+    Route::get('post/upload', 'PostController@showPostFrom')->name('post.form');
+    Route::post('post/upload', 'PostController@store')->name('post.send');
 });
 
