@@ -1,3 +1,8 @@
+@section('breadcrumb')
+    @parent
+    <li class="breadcrumb-item"><a href="{{ route('shop') }}">محصولات</li>
+    <li class="breadcrumb-item active"> {{ $file->title }} </li>
+@endsection
 @include('partials.navbar')
 </head>
 <body>
