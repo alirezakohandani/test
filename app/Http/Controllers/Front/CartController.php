@@ -86,6 +86,11 @@ class CartController extends Controller
       ]);
 
       $order = $transaction->checkout();
+  
+      if ($request->method == 'online') {
+         
+        return redirect()->away($order);
+      }
 
       return redirect()->route('shop')->with('success_payment', true);
 

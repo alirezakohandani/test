@@ -9,5 +9,5 @@ interface GatewayInterface
 {
     public function pay(Order $order);
     public function verify(Request $request);
-    public function getName();
+
 }
