@@ -18,12 +18,14 @@
                                         <div class="form-group">
                                             <label for="first-name-vertical">ایمیل</label>
                                             <input type="email" id="first-name-vertical" class="form-control" name="email" placeholder="ایمیل">
+                                            <small class="text-danger">@error('email') {{ $message }} @enderror</small>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="first-name-vertical">پسورد</label>
                                             <input type="password" id="first-name-vertical" class="form-control" name="password" placeholder="پسورد">
+                                            <small class="text-danger">@error('password') {{ $message }} @enderror</small>
                                         </div>
                                     </div>
                                   </div>

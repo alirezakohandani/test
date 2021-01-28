@@ -89,7 +89,7 @@ class RegisterController extends Controller
      public function register(Request $request)
      {
        
-       
+       $this->validateForm($request);
        
         $user = $this->create($request->all());
 
@@ -112,6 +112,7 @@ class RegisterController extends Controller
      */
      protected function validateForm(Request $request)
      {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
