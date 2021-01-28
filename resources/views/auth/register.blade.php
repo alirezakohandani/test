@@ -19,30 +19,35 @@
                                             <div class="form-group">
                                                 <label for="first-name-vertical">ایمیل</label>
                                                 <input type="email" id="first-name-vertical" class="form-control" name="email" placeholder="ایمیل">
+                                                <small class="text-danger">@error('email') {{$message}} @enderror</small>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="first-name-vertical">نام</label>
                                                 <input type="text" id="first-name-vertical" class="form-control" name="name" placeholder="نام">
+                                                <small class="text-danger">@error('name') {{ $message }} @enderror</small>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="first-name-vertical">پسورد</label>
                                                 <input type="password" id="first-name-vertical" class="form-control" name="password" placeholder="پسورد">
+                                                <small class="text-danger">@error('password') {{ $message }} @enderror</small>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="first-name-vertical">تکرار پسورد</label>
                                                 <input type="password" id="first-name-vertical" class="form-control" name="password_confirmation" placeholder="تکرار پسورد">
+                                                <small class="text-danger">@error('password_confirmation') {{ $message }} @enderror</small>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="password-vertical">شماره همراه</label>
                                                 <input type="text" id="password-vertical" class="form-control" name="cellphone" placeholder="شماره همراه">
+                                                <small class="text-danger">@error('cellphone') {{ $message }} @enderror</small>
                                             </div>
                                         </div>
                                 
@@ -53,7 +58,6 @@
                                     </div>
                                 </div>
                             </form>
-                            @include('partials.validation-errors')
                         </div>
                     </div>
                 </div>

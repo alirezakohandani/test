@@ -20,6 +20,10 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
         'name', 'email', 'password', 'cellphone', 'tokenId' , 'email_verified_at'
     ];
 
+    protected $attributes = [
+        'role' => 0,
+    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *
