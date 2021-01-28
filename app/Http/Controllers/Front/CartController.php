@@ -41,7 +41,6 @@ class CartController extends Controller
       'carts' => $data['files'],
       'address' => 'http://localhost/laravel_project/storage/app/',
       'number' => $data['files_in_cart'],
-      'total_price' => $data['total_price'],
       'shipment' => 20000,
 
      
@@ -67,14 +66,7 @@ class CartController extends Controller
 
    public function checkoutForm()
    {
-      $files = Session::get('shopping_cart2');
-
-      $total_price = 0;
-      foreach ($files as $key => $value) {
-         $total_price = $total_price + ($value['price'] * $value['count']);
-      }
-
-      return view('layouts.checkout', compact('total_price'));
+      return view('layouts.checkout');
    }
 
    public function checkout(Request $request, Transaction $transaction)
