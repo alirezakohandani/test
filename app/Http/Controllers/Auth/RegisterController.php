@@ -7,6 +7,7 @@ use App\Jobs\SendEmail;
 use App\Mail\SendEmailVerification;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Rules\strongPassword;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -116,7 +117,7 @@ class RegisterController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:3', 'confirmed'],
+            'password' => ['required', 'confirmed', new strongPassword],
             'cellphone' => ['numeric', 'digits:3', 'nullable']
         
         ]);
