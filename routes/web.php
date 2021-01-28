@@ -48,7 +48,7 @@ Route::group(['prefix' => 'cart', 'namespace' => 'Front'], function () {
     
 });
 
-Route::post('payment/callback', 'PaymentController@verify')->name('payment.verify');
+Route::any('payment/callback/', 'PaymentController@verify')->name('payment.verify');
 
 // Route::get('test', function(Request $request){
 

@@ -12,11 +12,13 @@ class Zarinpal implements GatewayInterface
 {
     private $merchantId;
     private $callback;
+    private $client;
 
     public function __construct()
     {
         $this->merchantId = config('payment.merchant_id');
         $this->callback = route('payment.verify', 'zarinpal');
+        $this->client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl');
     }
 
     /**
@@ -26,16 +28,15 @@ class Zarinpal implements GatewayInterface
      */
     public function pay(Order $order) 
     {
-        $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl');
 
-        $result = $client->PaymentRequest(
+        $result = $this->client->PaymentRequest(
             [
                 'MerchantID' => $this->merchantId,
-                'Amount' => $order->amount,
+                'Amount' => 1000,
                 'Description' => 'توضیحات در خصوص محصولات مختلف',
                 'Email' => auth()->user()->email,
                 'Mobile' => auth()->user()->cellphone,
-                'CallbackURL' => $this->callback,
+                'CallbackURL' => $this->callback . '/?order=' . $order->id . '/',
             ]
         );
         
@@ -58,6 +59,25 @@ class Zarinpal implements GatewayInterface
     public function verify(Request $request) 
     {
        
+        if ($request->get('Status') == 'OK') {
+
+            $result = $this->client->PaymentVerification([
+                'MerchantID' => $this->merchantId,
+                'Authority' => $request->get('Authority'),
+                'Amount' => 1000,
+            ]);
+    
+               
+            if ($result->Status == 101) {
+
+                return [
+                    'order_id' => $request->get('zarinpal/?order'),
+                    'ref_id' => $result->RefID,
+                    'gateway' => 'zarinpal',
+                ];
+            }
+    
+        }
     }
 
 }
