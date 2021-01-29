@@ -11,4 +11,21 @@ class MagicController extends Controller
     {
         return view('auth.magic');
     }
+
+    public function login()
+    {
+        //validation
+
+        //check if email exists
+
+        //build link
+
+        //save link in the table
+
+        //send link
+
+        //check link
+
+        //login
+    }
 }
