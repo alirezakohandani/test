@@ -133,7 +133,7 @@ class FileController extends Controller
         File::withTrashed()->where('id', $id)->restore();
 
         alert()->success('فایل به لیست محصولات اضافه شد');
-        
+
         return redirect()->back();
     }
 }
