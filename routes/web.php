@@ -28,6 +28,7 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth', 'as' => 'auth.'], funct
     Route::get('send/email/verificarion', 'VerificationController@send')->name('send.verify.email');
     Route::get('login/magic', 'MagicController@show')->name('login.form.magic');
     Route::post('login/magic', 'MagicController@login')->name('login.magic');
+    Route::get('login/magic/{token}', 'MagicController@check')->name('login.magic.check');
 });    
 Route::get('email/verify/{token}', 'Account\FinalVerificationController@verify')->name('email.verify');
 
