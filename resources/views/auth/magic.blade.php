@@ -17,36 +17,15 @@
                                     <div class="col-12">
                                             
                                         <div class="form-group">
-                                            <label for="first-name-vertical">ایمیل</label>
+                                            <label for="first-name-vertical">ایمیل یا شماره همراه</label>
                                             <input type="email" id="first-name-vertical" class="form-control" name="email" placeholder="ایمیل">
                                             <small class="text-danger">@error('email') {{ $message }} @enderror</small>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="first-name-vertical">پسورد</label>
-                                            <input type="password" id="first-name-vertical" class="form-control" name="password" placeholder="پسورد">
-                                            <small class="text-danger">@error('password') {{ $message }} @enderror</small>
-                                        </div>
-                                    </div>
                                   </div>
-                                  <div class="form-group col-12">
-                                    <fieldset class="checkbox">
-                                      <div class="vs-checkbox-con vs-checkbox-primary">
-                                        <input name="remember" type="checkbox">
-                                        <span class="vs-checkbox">
-                                          <span class="vs-checkbox--check">
-                                            <i class="vs-icon feather icon-check"></i>
-                                          </span>
-                                        </span>
-                                        <span class="">مرا به خاطر بسپار</span>
-                                      </div> 
-                                      <div class="g-recaptcha" data-sitekey="{{config('services.recapcha.site_key')}}"></div>
-                                    </fieldset> 
-                                  </div>
+                               
                                   <div class="col-12">
                                         <button type="submit"  class="btn btn-primary mr-1 mb-1 waves-effect waves-light">ورود</button>
-                                        <a href="{{ route('auth.login.magic') }}" style="text-align: right"><small>ورود بدون رمز ورود</small></a>
                                     </div>
                                 </div>
                             </div>
