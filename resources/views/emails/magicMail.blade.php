@@ -1,1 +1,1 @@
-<a href="{{ route('auth.login.magic.check', $token) }}">login konid</a>
+<a href="{{ route('auth.login.magic.check', [$token, 'email=' . $user]) }}">login konid</a>

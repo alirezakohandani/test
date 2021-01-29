@@ -27,6 +27,9 @@
   @if (session('success_payment'))
   <div class="alert alert-success text-center">سفارش شما با شماره ثبت شد</div>
   @endif
+  @if (session('successMagicLogin'))
+  <div class="alert alert-success text-center">{{ session('successMagicLogin') }}</div>
+  @endif
   <form action="{{ route('shop.search') }}" method="GET" role="search">
     <div class="input-group">
         <input type="text" class="form-control" name="s"
