@@ -71,4 +71,9 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
         return $this->hasMany(Comment::class);
     }
 
+    public function magiclink()
+    {
+        return $this->belongsTo(Magiclink::class);
+    }
+
 }
