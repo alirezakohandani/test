@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\MagicLink;
+use App\Models\Magiclink as ModelsMagiclink;
+use App\Models\User;
 use App\Services\Auth\MagicAuthentication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class MagicController extends Controller
@@ -24,9 +28,6 @@ class MagicController extends Controller
 
         Mail::to($request->email)->send(new MagicLink($info['user']['email'], $info['token']));
 
-        //check link
-
-        //login
     }
 
     protected function validateForm(Request $request)
@@ -36,8 +37,18 @@ class MagicController extends Controller
         ]);
     }
 
-    public function check()
+    public function check(Request $request, $token)
     {
-        dd('check');
+       
+        $token_exsists = DB::table('magiclinks')->where('link', $token)->exists();
+     
+        $magic = ModelsMagiclink::where('link', $token)->first();
+
+        $user = User::where('email', $request->input('email'))->first();
+
+        if ($token_exsists && $magic->user_id == $user->id) {
+            Auth::login($user);
+            return redirect()->route('shop')->with('successMagicLogin', $user->name . 'عزیز با موفقیت لاگین شدید');
+        }
     }
 }

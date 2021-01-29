@@ -99,7 +99,7 @@ class RegisterController extends Controller
        
         Auth::login($user);
    
-        return redirect()->route('home')->with('registred', true);
+        return redirect()->route('home')->alert('registred', true);
 
        
      }
