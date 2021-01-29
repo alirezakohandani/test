@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\MagicLink;
 use App\Services\Auth\MagicAuthentication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MagicController extends Controller
 {
@@ -18,9 +20,9 @@ class MagicController extends Controller
         
         $this->validateForm($request);
 
-        $magic->buildLink($request);
+        $info = $magic->buildLink($request);
 
-        //send link
+        Mail::to($request->email)->send(new MagicLink($info['user']['email'], $info['token']));
 
         //check link
 
@@ -32,5 +34,10 @@ class MagicController extends Controller
         $request->validate([
             'email' => ['required', 'email', 'exists:users'],
         ]);
+    }
+
+    public function check()
+    {
+        dd('check');
     }
 }

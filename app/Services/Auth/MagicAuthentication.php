@@ -20,5 +20,10 @@ class MagicAuthentication
             'user_id' => $user->id,
             'link' => $token,
         ]);
+
+        return [
+            'token' => $token,
+            'user' => $user,
+        ];
     }
 }
