@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         factory(User::class, 10)->create()->each(function($user) {
             $user->posts()->saveMany(factory(Post::class, rand(1,10))->make());
         });
+
+        $this->call(FileTableSeeder::class);
     }
 }

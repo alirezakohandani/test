@@ -57,7 +57,7 @@ class FileController extends Controller
 
     public function showMange()
     {
-        $files = File::get();
+        $files = File::withTrashed()->get();
         define('THUMB_ADDR', 'http://localhost/laravel_project/storage/app/');
         return view('admin.fileManage', [
             'files' => $files,
