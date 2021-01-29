@@ -23,9 +23,11 @@ Route::group(['prefix' => 'admin/', 'namespace' => 'Admin', 'as' => 'admin.'], f
     Route::post('file/upload/ajax', 'FileController@storeWithAjax')->name('file.send.ajax');
     Route::get('file/update/{id}', 'FileController@showUpdateForm')->name('file.form.update');
     Route::post('file/update/', 'FileController@update')->name('file.update');
+    Route::post('file/softDelete/{id}', 'FileController@softDelete')->name('file.softDelete');
     Route::get('manage', 'FileController@showMange')->name('file.manage');
     Route::delete('manage/delete/{id}', 'FileController@delete')->name('file.delete');
     Route::get('post/upload', 'PostController@showPostFrom')->name('post.form');
     Route::post('post/upload', 'PostController@store')->name('post.send');
+    
 });
 

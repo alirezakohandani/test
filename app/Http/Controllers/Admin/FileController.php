@@ -127,4 +127,13 @@ class FileController extends Controller
 
         return redirect()->back();
     }
+
+    public function softDelete($id)
+    {
+        File::withTrashed()->where('id', $id)->restore();
+
+        alert()->success('فایل به لیست محصولات اضافه شد');
+        
+        return redirect()->back();
+    }
 }
