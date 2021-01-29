@@ -14,6 +14,7 @@
 use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -25,7 +26,8 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth', 'as' => 'auth.'], funct
     Route::post('login', 'LoginController@login')->name('login');
     Route::get('logout', 'LoginController@logout')->name('logout');
     Route::get('send/email/verificarion', 'VerificationController@send')->name('send.verify.email');
-    Route::get('login/magic', 'MagicController@show')->name('login.magic');
+    Route::get('login/magic', 'MagicController@show')->name('login.form.magic');
+    Route::post('login/magic', 'MagicController@login')->name('login.magic');
 });    
 Route::get('email/verify/{token}', 'Account\FinalVerificationController@verify')->name('email.verify');
 

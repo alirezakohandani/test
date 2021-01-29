@@ -46,7 +46,7 @@
                                   </div>
                                   <div class="col-12">
                                         <button type="submit"  class="btn btn-primary mr-1 mb-1 waves-effect waves-light">ورود</button>
-                                        <a href="{{ route('auth.login.magic') }}" style="text-align: right"><small>ورود بدون رمز ورود</small></a>
+                                        <a href="{{ route('auth.login.form.magic') }}" style="text-align: right"><small>ورود بدون رمز ورود</small></a>
                                     </div>
                                 </div>
                             </div>

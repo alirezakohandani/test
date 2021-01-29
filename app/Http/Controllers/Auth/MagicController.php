@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\Auth\MagicAuthentication;
 use Illuminate\Http\Request;
 
 class MagicController extends Controller
@@ -12,20 +13,24 @@ class MagicController extends Controller
         return view('auth.magic');
     }
 
-    public function login()
+    public function login(Request $request, MagicAuthentication $magic)
     {
-        //validation
+        
+        $this->validateForm($request);
 
-        //check if email exists
-
-        //build link
-
-        //save link in the table
+        $magic->buildLink($request);
 
         //send link
 
         //check link
 
         //login
+    }
+
+    protected function validateForm(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email', 'exists:users'],
+        ]);
     }
 }

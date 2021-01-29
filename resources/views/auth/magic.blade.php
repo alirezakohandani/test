@@ -10,7 +10,7 @@
                 <h5 style="color: red; text-align: right"> {{ session('message') }} </h5>
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-vertical" method="POST" action="{{ route('auth.login') }}">
+                        <form class="form form-vertical" method="POST" action="{{ route('auth.login.magic') }}">
                             {{ csrf_field() }}
                             <div class="form-body">
                                 <div class="row">
