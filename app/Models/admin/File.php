@@ -3,6 +3,7 @@
 namespace App\Models\admin;
 
 use App\Models\Order;
+use App\traits\deletable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -10,6 +11,7 @@ class File extends Model
 {
 
     use SoftDeletes;
+    use deletable;
 
     protected  $fillable = [
        'type', 'title', 'description', 'price', 'thumb', 'link'
@@ -20,8 +22,4 @@ class File extends Model
         return $this->belongsToMany(Order::class);
     }
 
-    public function getDeletedAttribute($key)
-    {
-        return $this->deleted_at !== null ? "style=background:red" : '';
-    }
 }
