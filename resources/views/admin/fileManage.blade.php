@@ -43,13 +43,13 @@
                                     <tbody>
                                 @foreach ($files as $file)
                                     <tr role="row" class="odd">
-                                            <td {{ $file->deleted_at !== null ? "style=background:red" : ''  }}><p>{{$loop->index+1}}</p></td>
-                                            <td {{ $file->deleted_at !== null ? "style=background:red" : ''  }} class="sorting_1"><img style="width: 50px; height: 50px" src="{{ $address.$file->thumb }}"></td>
-                                            <td {{ $file->deleted_at !== null ? "style=background:red" : ''  }} ><p>{{ $file->title }}</p></td>
-                                            <td {{ $file->deleted_at !== null ? "style=background:red" : ''  }}>{{ Str::limit($file->description, 15) }}</td>
-                                            <td {{ $file->deleted_at !== null ? "style=background:red" : ''  }}>{{ $file->type }}</td>
-                                            <td {{ $file->deleted_at !== null ? "style=background:red" : ''  }}>{{ $file->price }}</td>
-                                            <td {{ $file->deleted_at !== null ? "style=background:red" : ''  }}>
+                                            <td {{ $file->deleted  }}><p>{{$loop->index+1}}</p></td>
+                                            <td {{ $file->deleted  }} class="sorting_1"><img style="width: 50px; height: 50px" src="{{ $address.$file->thumb }}"></td>
+                                            <td {{ $file->deleted  }} ><p>{{ $file->title }}</p></td>
+                                            <td {{ $file->deleted  }}>{{ Str::limit($file->description, 15) }}</td>
+                                            <td {{ $file->deleted  }}>{{ $file->type }}</td>
+                                            <td {{ $file->deleted  }}>{{ $file->price }}</td>
+                                            <td {{ $file->deleted  }}>
 
                                         <form action="{{ route('admin.file.delete', $file->id) }}" method="post">
                                             {{ csrf_field() }}

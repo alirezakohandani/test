@@ -19,4 +19,9 @@ class File extends Model
     {
         return $this->belongsToMany(Order::class);
     }
+
+    public function getDeletedAttribute($key)
+    {
+        return $this->deleted_at !== null ? "style=background:red" : '';
+    }
 }
