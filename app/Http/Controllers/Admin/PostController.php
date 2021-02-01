@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,5 +41,25 @@ class PostController extends Controller
             'image' => ['required'],
         ]);
 
+    }
+
+    public function showManage()
+    {
+
+        $posts = Post::orderBy('id', 'DESC')->get();
+
+        define('THUMB_ADDR', 'http://localhost/laravel_project/storage/app/');
+        return view('admin.posts.postManage', [
+            'posts' => $posts,
+            'address' => THUMB_ADDR,
+        ]);
+    }
+
+    public function delete(Post $post)
+    {
+
+        $post->delete();
+        alert()->success('پست با موفقیت حذف شد');
+        return redirect()->back();
     }
 }

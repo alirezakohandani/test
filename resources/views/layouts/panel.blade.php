@@ -31,7 +31,7 @@
             <ul class="menu-content">
               <li><a href="{{ route('admin.post.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Grid">ایجاد پست</span></a>
               </li>
-              <li><a href=""><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Typography">مدیریت پست</span></a>
+              <li><a href="{{ route('admin.post.manage') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Typography">مدیریت پست</span></a>
               </li>
               </li>
             </ul>
