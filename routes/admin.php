@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin/', 'namespace' => 'Admin', 'as' => 'admin.'], f
     Route::post('post/upload', 'PostController@store')->name('post.send');
     Route::get('post/manage', 'PostController@showManage')->name('post.manage');
     Route::delete('post/manage/delete/{post}', 'PostController@delete')->name('post.delete');
+    Route::post('file/softDelete/{post}', 'PostController@softDelete')->name('post.softDelete');
     
 });
 

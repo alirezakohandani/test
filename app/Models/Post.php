@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\traits\deletable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
     use SoftDeletes;
+    use deletable;
 
     protected $fillable = [
         'user_id','title','description','image',

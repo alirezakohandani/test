@@ -46,7 +46,7 @@ class PostController extends Controller
     public function showManage()
     {
 
-        $posts = Post::orderBy('id', 'DESC')->get();
+        $posts = Post::withTrashed()->orderBy('id', 'DESC')->get();
 
         define('THUMB_ADDR', 'http://localhost/laravel_project/storage/app/');
         return view('admin.posts.postManage', [
