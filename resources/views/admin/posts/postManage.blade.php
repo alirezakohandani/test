@@ -57,7 +57,7 @@
                                    
                                         <div class="fonticon-wrap"><a href="{{ route('admin.file.form.update', $post->id) }}"><i class="fa fa-pencil"></i></a></div>
                                     @if ($post->deleted_at !== null)
-                                    <form action="{{ route('admin.file.softDelete', $post->id) }}" method="post">
+                                    <form action="{{ route('admin.post.softDelete', $post) }}" method="post">
                                         {{ csrf_field() }}
                                           <button type="submit">
                                             <div class="fonticon-wrap"><i class="fa fa-refresh"></i></div>
