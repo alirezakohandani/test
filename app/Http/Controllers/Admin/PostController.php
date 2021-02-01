@@ -59,7 +59,7 @@ class PostController extends Controller
     {
 
         $post->delete();
-        alert()->success('پست با موفقیت حذف شد');
+        alert()->error('پست با موفقیت حذف شد');
         return redirect()->back();
     }
 }
