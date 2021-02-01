@@ -57,9 +57,15 @@ class PostController extends Controller
 
     public function delete(Post $post)
     {
-
         $post->delete();
         alert()->error('پست با موفقیت حذف شد');
+        return redirect()->back();
+    }
+
+    public function softDelete($id)
+    {
+        Post::withTrashed()->where('id', $id)->restore();
+
         return redirect()->back();
     }
 }
