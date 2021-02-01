@@ -28,6 +28,8 @@ Route::group(['prefix' => 'admin/', 'namespace' => 'Admin', 'as' => 'admin.'], f
     Route::delete('manage/delete/{id}', 'FileController@delete')->name('file.delete');
     Route::get('post/upload', 'PostController@showPostFrom')->name('post.form');
     Route::post('post/upload', 'PostController@store')->name('post.send');
+    Route::get('post/manage', 'PostController@showManage')->name('post.manage');
+    Route::delete('post/manage/delete/{post}', 'PostController@delete')->name('post.delete');
     
 });
 
