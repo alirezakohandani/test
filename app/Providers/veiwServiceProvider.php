@@ -28,12 +28,12 @@ class veiwServiceProvider extends ServiceProvider
         View::composer(['layouts.cart', 'layouts.checkout'], function($view) {
 
             $files = Session::get('shopping_cart2');
-            $total_price = 0;
-            foreach ($files as $key => $value) {
-               $total_price = $total_price + ($value['price'] * $value['count']);
-            }
+            $totalPrice = array_reduce($files, function($totalPrice, $file) {
 
-            $view->with('total_price', $total_price);
+                return $totalPrice += $file['price'] * $file['count'];
+               
+            }, 0);
+            return $view->with('total_price', $totalPrice);
         });
     }
 }
