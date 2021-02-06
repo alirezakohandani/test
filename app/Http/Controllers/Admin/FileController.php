@@ -58,10 +58,8 @@ class FileController extends Controller
     public function showMange()
     {
         $files = File::withTrashed()->orderBy('created_at', 'DESC')->get();
-        define('THUMB_ADDR', 'http://localhost/laravel_project/storage/app/');
         return view('admin.fileManage', [
             'files' => $files,
-            'address' => THUMB_ADDR,
         ]);
     }
     /**

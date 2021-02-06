@@ -39,7 +39,6 @@ class CartController extends Controller
 
      return view('layouts.cart', [
       'carts' => $data['files'],
-      'address' => 'http://localhost/laravel_project/storage/app/',
       'number' => $data['files_in_cart'],
       'shipment' => 20000,
 
