@@ -7,6 +7,7 @@
 
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VerifyEmailController;
+use App\Http\Middleware\IsAdmin;
 use App\Jobs\SendEmail;
 use App\Mail\TopicCreated;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 
 //panel routes
-Route::group(['prefix' => 'admin/', 'namespace' => 'Admin', 'as' => 'admin.'], function() {
+Route::group(['prefix' => 'admin/', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'is_admin'], function() {
     Route::get('/', 'DashboardController')->name('dashboard');
     Route::get('file/upload', 'FileController@showFileForm')->name('file.form');
     Route::post('file/upload', 'FileController@store')->name('file.send');
