@@ -16,11 +16,9 @@ class ShopController extends Controller
      */
     public function show()
     {
-        define('THUMB_ADDR', 'http://localhost/laravel_project/storage/app/');
         $files = DB::table('files')->paginate(8);
         return view('layouts.shop', [
             'files' => $files,
-            'address' => THUMB_ADDR,
         ]);
     }
 
@@ -31,15 +29,12 @@ class ShopController extends Controller
      */
     public function showDetails(Request $request)
     {
-        define('THUMB_ADDR', 'http://localhost/laravel_project/storage/app/');
-
         $file_id = $request->id;
 
         $file = File::where('id', $file_id)->first();
     
         return view('layouts.shopDetails', [
             'file' => $file,
-            'address' => THUMB_ADDR,
         ]);
     }
 
@@ -55,7 +50,6 @@ class ShopController extends Controller
         $files = File::where('description', 'LIKE', "%{$search}%")->paginate(8);
         return view('layouts.shop', [
             'files' => $files,
-            'address' => 'http://localhost/laravel_project/storage/app/',
         ]);
     }
 

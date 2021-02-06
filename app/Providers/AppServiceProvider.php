@@ -37,6 +37,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->share('address', 'http://localhost/laravel_project/storage/app/');
     }
 }

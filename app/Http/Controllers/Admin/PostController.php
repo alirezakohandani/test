@@ -47,11 +47,8 @@ class PostController extends Controller
     {
 
         $posts = Post::withTrashed()->orderBy('id', 'DESC')->get();
-
-        define('THUMB_ADDR', 'http://localhost/laravel_project/storage/app/');
         return view('admin.posts.postManage', [
             'posts' => $posts,
-            'address' => THUMB_ADDR,
         ]);
     }
 
