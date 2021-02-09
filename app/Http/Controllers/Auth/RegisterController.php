@@ -90,18 +90,13 @@ class RegisterController extends Controller
      public function register(Request $request)
      {
        
-       $this->validateForm($request);
+        $this->validateForm($request);
        
         $user = $this->create($request->all());
 
-        Mail::to($request->email)->send(new SendEmailVerification($user, $user->tokenId));
-        // SendEmail::dispatch();
+        SendEmail::dispatch($user);
        
         Auth::login($user);
-   
-        return redirect()->route('home')->alert('registred', true);
-
-       
      }
 
 
