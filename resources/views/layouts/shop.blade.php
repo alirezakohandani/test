@@ -10,7 +10,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/app-assets/css-rtl/pages/app-ecommerce-shop.min.css') }}">
 </head>
   <!-- BEGIN: Body-->
-  {{ dd($address) }}
   <body class="horizontal-layout horizontal-menu 2-columns ecommerce-application navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
 <h3 style="text-align: center">فروشگاه</h3>
 <hr>

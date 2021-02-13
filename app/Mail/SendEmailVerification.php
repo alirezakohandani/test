@@ -26,11 +26,10 @@ class SendEmailVerification extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user, $token)
+    public function __construct(User $user)
     {
-        
         $this->user = $user;
-        $this->token = $token;
+        $this->token = $user->tokenId;
         
     }
 
@@ -41,7 +40,6 @@ class SendEmailVerification extends Mailable
      */
     public function build()
     {
-       
         return $this->view('emails.email-verification', [
             'user' => $this->user,
             'token' => $this->token,

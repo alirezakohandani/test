@@ -49,15 +49,13 @@ class VerificationController extends Controller
 
     public function send(Request $request)
     {
-        //  SendEmail::dispatch();
-
         if ($request->user()->email_verified_at == null)
         {
             $user = $request->user();
             $token = $request->user()->tokenId;
-            Mail::to($user->email)->send(new SendEmailVerification($user, $token));
+            SendEmail::dispatch($user);
             return redirect()->route('home')->with('email-verified', 'ایمیل تایید شد');
-            //SendEmail::dispatch();
+            
         }
 
         return redirect()->route('home');
